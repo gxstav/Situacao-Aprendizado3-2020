@@ -44,7 +44,7 @@ This repository was made by [@gxstav](https://github.com/gxstav), [@ojedabecka](
 [3d]:https://spring.io/projects/spring-boot
 [3g]:https://spring.io/guides
 
- [4]:/github/images/maven.svg "Apache Maven"
+ [4]:/github/images/maven_logo.svg "Apache Maven"
 [4l]:https://maven.apache.org/
 [4d]:https://maven.apache.org/guides/index.html
 [4g]:https://maven.apache.org/guides/mini/index.html
