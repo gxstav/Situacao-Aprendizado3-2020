@@ -21,7 +21,7 @@ This repository was made by [@gxstav](https://github.com/gxstav), [@ojedabecka](
  | :------------------: | :-------------: | :--------: |:--------------:|:--------------:|
  | Java                 | Language        | 8.X        | [![][eye]][1d] | [![][eye]][1g] |
  | MySQL                | Database        | 8.0.X      | [![][eye]][2d] | [![][eye]][2g] |
- | Maven                | Package Manager | 3.7        | [![][eye]][4d] | [![][eye]][4g] |
+ | [![alt text][3]][3l] | Package Manager | 3.7        | [![][eye]][4d] | [![][eye]][4g] |
  | Springboot           | Framework       | 2.2.6      | [![][eye]][3d] | [![][eye]][3g] |
 
  
@@ -39,7 +39,7 @@ This repository was made by [@gxstav](https://github.com/gxstav), [@ojedabecka](
 [2d]:https://nodejs.org/en/docs/
 [2g]:https://nodejs.org/en/docs/guides/
 
- [3]:https://miro.medium.com/max/512/1*k73wp-nDid53eeQ0RDGvdw.png "TypeScript"
+ [3]:https://github.com/gxstav/Situacao-Aprendizado3-2020/github/images/spring-logo2.svg "Springboot"
 [3l]:https://spring.io/
 [3d]:https://spring.io/projects/spring-boot
 [3g]:https://spring.io/guides
