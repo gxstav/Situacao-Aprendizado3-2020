@@ -39,7 +39,7 @@ This repository was made by [@gxstav](https://github.com/gxstav), [@ojedabecka](
 [2d]:https://nodejs.org/en/docs/
 [2g]:https://nodejs.org/en/docs/guides/
 
- [3]:https://github.com/gxstav/Situacao-Aprendizado3-2020/github/images/spring-logo2.svg "Springboot"
+ [3]:/github/images/spring-logo2.svg "Springboot"
 [3l]:https://spring.io/
 [3d]:https://spring.io/projects/spring-boot
 [3g]:https://spring.io/guides
