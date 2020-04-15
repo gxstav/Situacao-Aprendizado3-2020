@@ -13,16 +13,16 @@ This repository was made by [@gxstav](https://github.com/gxstav), [@ojedabecka](
 
 ---
 
-### Resources (to be) used. [It Can have changes]
+### Resources (to be) used.
 
 <div align="center">
 
  |                      | Type            | Version    | Documentation  | Guides         |
  | :------------------: | :-------------: | :--------: |:--------------:|:--------------:|
- | Java                 | Language        | 8.X        | [![][eye]][1d] | [![][eye]][1g] |
- | MySQL                | Database        | 8.0.X      | [![][eye]][2d] | [![][eye]][2g] |
- | [![alt text][3]][3l] | Package Manager | 3.7        | [![][eye]][4d] | [![][eye]][4g] |
- | Springboot           | Framework       | 2.2.6      | [![][eye]][3d] | [![][eye]][3g] |
+ |[![Java][1]][1l]      | Language        | 8.X        | [![][eye]][1d] | [![][eye]][1g] |
+ |[![MySQL][2]][2l]     | Database        | 8.0.X      | [![][eye]][2d] | [![][eye]][2g] |
+ |[![Maven][3]][3l]     | Package Manager | 3.7        | [![][eye]][4d] | [![][eye]][4g] |
+ |[![Springboot][3]][3l]| Framework       | 2.2.6      | [![][eye]][3d] | [![][eye]][3g] |
 
  
 </div>
@@ -35,21 +35,16 @@ This repository was made by [@gxstav](https://github.com/gxstav), [@ojedabecka](
 [1g]:https://devcenter.heroku.com/start
 
  [2]:https://s3.us-east-2.amazonaws.com/upload-icon/uploads/icons/png/15056343581551942278-128.png "Node.js"
-[2l]:https://nodejs.org/en/
-[2d]:https://nodejs.org/en/docs/
+[2l]:https://www.mysql.com/
+[2d]:https://dev.mysql.com/doc/
 [2g]:https://nodejs.org/en/docs/guides/
 
- [3]:/github/images/spring-logo2.svg "Springboot"
+ [3]:/github/images/spring_logo.svg "Springboot"
 [3l]:https://spring.io/
 [3d]:https://spring.io/projects/spring-boot
 [3g]:https://spring.io/guides
 
- [4]:https://www.iconfinder.com/icons/1174949/download/png/128 "React.js"
-[4l]:https://reactjs.org
-[4d]:https://reactjs.org/docs/getting-started.html
-[4g]:https://reactjs.org/tutorial/tutorial.html
-
-[5]:https://res.cloudinary.com/hpiynhbhq/image/upload/v1514009145/bjmgfgry44rsp06q9kzp.png "Yarn"
-[5l]:https://yarnpkg.com/en/
-[5d]:https://yarnpkg.com/en/docs
-[5g]:https://yarnpkg.com/en/docs/getting-started
+ [4]:/github/images/maven.svg "Apache Maven"
+[4l]:https://maven.apache.org/
+[4d]:https://maven.apache.org/guides/index.html
+[4g]:https://maven.apache.org/guides/mini/index.html
