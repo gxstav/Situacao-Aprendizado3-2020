@@ -21,7 +21,7 @@ This repository was made by [@gxstav](https://github.com/gxstav), [@ojedabecka](
  | :------------------: | :-------------: | :--------: |:--------------:|:--------------:|
  |[![Java][1]][1l]      | Language        | 8.X        | [![][eye]][1d] | [![][eye]][1g] |
  |[![MySQL][2]][2l]     | Database        | 8.0.X      | [![][eye]][2d] | [![][eye]][2g] |
- |[![Maven][3]][3l]     | Package Manager | 3.7        | [![][eye]][4d] | [![][eye]][4g] |
+ |[![Maven][4]][4l]     | Package Manager | 3.7        | [![][eye]][4d] | [![][eye]][4g] |
  |[![Springboot][3]][3l]| Framework       | 2.2.6      | [![][eye]][3d] | [![][eye]][3g] |
 
  
