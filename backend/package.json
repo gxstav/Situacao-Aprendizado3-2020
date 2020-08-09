@@ -16,6 +16,8 @@
     "supertest": "^4.0.2"
   },
   "scripts": {
-    "start": "nodemon ./src/server.js"
+    "start": "nodemon ./src/server.js",
+    "knex:migrate": "knex --knexfile knexfile.js migrate:latest",
+    "knex:rollback": "knex --knexfile knexfile.js migrate:rollback"
   }
 }
