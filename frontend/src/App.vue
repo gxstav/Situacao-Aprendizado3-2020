@@ -49,7 +49,7 @@
       active: 'guide'
     })
   }
-  </script>
+</script>
 
 <style>
 #app {
