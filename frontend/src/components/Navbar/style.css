@@ -1,13 +1,18 @@
-.botao{
-    text-align: left;
-    background-color:#ffff;
+.signUp{
+    position: relative;
+    float: right;
 }
 
-.layout{
+.signUp #botao{
+    margin-right: 1.5em;
+}
+
+
+#layout{
     background-color: blueviolet;
 }
 
-.avatar{
+#avatar{
     margin: 10,5,3,0;
 }
 

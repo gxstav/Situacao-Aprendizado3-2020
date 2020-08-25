@@ -10,17 +10,17 @@ const { Header } = Layout;
 function navbar(){
   return(
    
-  <Layout className="layout">
+  <Layout id="layout">
     <Header>
       <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
         <Menu.Item key="1">Início</Menu.Item>
         <Menu.Item key="2">Conheça os Heroes</Menu.Item>
         <Menu.Item key="3">Projetos</Menu.Item>
-        <Button className="botao" type="primary">Cadastre-se</Button> 
-        <Avatar className="avatar" size={44} icon={<UserOutlined />} />
-
+        <div className="signUp">
+          <Button id="botao" type="primary">Cadastre-se</Button> 
+          <Avatar id="avatar" size={44} icon={<UserOutlined />} />
+        </div>
       </Menu>
-
     </Header>
   </Layout>
   )}
