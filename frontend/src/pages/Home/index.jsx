@@ -5,6 +5,7 @@ import Carousel from '../../components/Carousel'
 //
 // PODE IMPORTAR LOGOS, SVG, COMPONENTES AQUI
 //
+//
 
 function Home(){
 
