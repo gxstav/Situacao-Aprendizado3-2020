@@ -39,3 +39,5 @@ function carousel (){
 
     )}
 export default carousel;
+
+// colocar em um cointainer pra melhorar a visualização
