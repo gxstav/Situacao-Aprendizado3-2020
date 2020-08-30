@@ -1,14 +1,15 @@
 import React from 'react'
-import { Layout  } from 'antd';
+import { Layout   } from 'antd';
 import './style.css';
 
 const { Footer } = Layout;
+
 
 function footer() {
     return(
         <Layout>
             <Footer id='rodape'>
-                aqui é o rodape
+                <h4>Copyright ©</h4>
             </Footer>
         </Layout>
     )

@@ -15,7 +15,6 @@ function navbar(){
       <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
         <Menu.Item key="1">Início</Menu.Item>
         <Menu.Item key="2">Conheça os Heroes</Menu.Item>
-        <Menu.Item key="3">Projetos</Menu.Item>
         <div className="signUp">
           <Button id="botao" type="primary">Cadastre-se</Button> 
           <Avatar id="avatar" size={44} icon={<UserOutlined />} />

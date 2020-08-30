@@ -4,6 +4,7 @@ import Navbar from '../../components/Navbar'
 import Carousel from '../../components/Carousel'
 import Feed from '../../components/Feed'
 import Footer from '../../components/Footer'
+import Filter from '../../components/Filter'
 import { Row, Col } from 'antd';
 //
 // PODE IMPORTAR LOGOS, SVG, COMPONENTES AQUI
@@ -18,14 +19,15 @@ function Home(){
       <Row>
         <Col span={16}>
           <div id='feedstyle'>
-            <h1>Projetos aqui</h1>
+            <h1>PROJETOS</h1>
             <hr />
+            <Feed />
             <Feed />
           </div>
         </Col>
         <Col span={8}>
           <div id='filter'>
-            <h1>filtro aqui</h1>
+            <Filter />
           </div>
         </Col>
       </Row>
