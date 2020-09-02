@@ -7,11 +7,35 @@ import Footer from '../../components/Footer'
 import Filter from '../../components/Filter'
 import { Form, Input, InputNumber, Button } from 'antd';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
+import { Layout } from 'antd';
 
+
+const { Header, Sider, Content } = Layout;
+
+/*
   const layout = {
   labelCol: { span: 8 },
   wrapperCol: { span: 16 },
 }; 
+
+*/
+
+const mystyle = {
+  color: "white",
+  backgroundColor: "DodgerBlue",
+  padding: "10px",
+  fontFamily: "Arial"
+};
+
+const meuregistro = {
+  width: "50%",
+  height: "50%",
+  margin: 0,
+  padding: 0
+  
+  
+
+};
 
 /*
 const validateMessages = {
@@ -36,14 +60,19 @@ function Cadastro(){
 
     
     <div id="cadastroPage">
+     <Navbar />
+     <p></p>
      
-     <Form {...layout} name="cadastro">
+     <h1 style={mystyle}>Cadastro</h1>
+     <p></p>
+     <Content style={meuregistro}>
+     <Form name="cadastro">
       <Form.Item name="nome" label="Nome do Responsável" rules={[{ required: true }]}>
         <Input />    
         
         <p></p>
         <Form.Item
-        name="email" label="Email da ONG ou Responsável" rules={[{ type: 'email', message: 'The input is not valid E-mail!',},{ required: true, message: 'Please input your E-mail!',
+        name="email" label="Email da ONG ou Responsável" rules={[{ type: 'email', message: 'Este não é um email válido!',},{ required: true, message: 'Por favor insira seu email!',
           },
         ]}
       >
@@ -56,7 +85,7 @@ function Cadastro(){
         rules={[
           {
             required: true,
-            message: 'Please input your password!',
+            message: 'Por favor insira sua senha!',
           },
         ]}
         hasFeedback
@@ -72,7 +101,7 @@ function Cadastro(){
         rules={[
           {
             required: true,
-            message: 'Please confirm your password!',
+            message: 'Por favor confirme sua senha!',
           },
           ({ getFieldValue }) => ({
             validator(rule, value) {
@@ -106,12 +135,14 @@ function Cadastro(){
       <Form.Item name="descricao" label="Descrição">
         <Input.TextArea />
       </Form.Item>
-      <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
+      <Form.Item>
         <Button type="primary" htmlType="submit">
           Registrar
         </Button>
       </Form.Item>
     </Form>
+    </Content>
+    <Footer></Footer>
  
     </div>
   )
