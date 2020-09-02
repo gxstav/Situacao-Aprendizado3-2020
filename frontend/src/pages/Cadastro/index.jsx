@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
 import './styles.css';
 import Navbar from '../../components/Navbar'
-import Carousel from '../../components/Carousel'
-import Feed from '../../components/Feed'
 import Footer from '../../components/Footer'
-import Filter from '../../components/Filter'
 import { Form, Input, InputNumber, Button } from 'antd';
-import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { Layout } from 'antd';
 
 
@@ -50,15 +46,19 @@ const validateMessages = {
 };
  */
 
-//
-// PODE IMPORTAR LOGOS, SVG, COMPONENTES AQUI
-//
-
 function Cadastro(){
+
+  async function handleCadastro(event) {
+    event.preventDefault()
+    try {
+      // api request to save data.
+    } catch (error) {
+      alert('Erro ao cadastrar, tente novamente.')
+    }
+  }
 
   return (
 
-    
     <div id="cadastroPage">
      <Navbar />
      <p></p>
@@ -66,7 +66,7 @@ function Cadastro(){
      <h1 style={mystyle}>Cadastro</h1>
      <p></p>
      <Content style={meuregistro}>
-     <Form name="cadastro">
+     <Form name="cadastro" onSubmit={handleCadastro}>
       <Form.Item name="nome" label="Nome do Responsável" rules={[{ required: true }]}>
         <Input />    
         
@@ -117,22 +117,22 @@ function Cadastro(){
       </Form.Item>
 
       </Form.Item>
-      <Form.Item name="telefone" label="Telefone" rules={[{ type: 'tel' }]}>
+      <Form.Item name="telefone" label="Telefone" rules={[{ type: 'tel' , required: true }]}>
         <Input/>
       </Form.Item>
 
-      <Form.Item name="cidade" label="Cidade">
+      <Form.Item name="cidade" label="Cidade" rules={[{ required: true }]}>
         <Input />
       </Form.Item>
 
-      <Form.Item name="estado" label="Estado">
+      <Form.Item name="estado" label="Estado" rules={[{ required: true }]}>
         <Input />
       </Form.Item>
 
       <Form.Item name="site" label="Site da ONG">
         <Input />
       </Form.Item>
-      <Form.Item name="descricao" label="Descrição">
+      <Form.Item name="descricao" label="Descrição" rules={[{ required: true }]}>
         <Input.TextArea />
       </Form.Item>
       <Form.Item>
