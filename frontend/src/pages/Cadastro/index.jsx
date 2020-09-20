@@ -2,7 +2,7 @@ import React from 'react';
 import './styles.css';
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, Row, Col } from 'antd';
 import { Layout } from 'antd';
 
 
@@ -65,7 +65,16 @@ function Cadastro(){
      
      <h1 style={mystyle}>Cadastro</h1>
      <p></p>
-     <Content style={meuregistro}>
+     <Row>
+    <Col span={18} push={6}>
+    <img src="../logo.jpg" width={700}></img>
+    </Col>
+    <Col span={6} pull={120}>
+      
+
+    Preencha os campos abaixo:
+
+    <Content style={meuregistro}>
      <Form name="cadastro" onSubmit={handleCadastro}>
       <Form.Item name="nome" label="Nome do Responsável" rules={[{ required: true }]}>
         <Input />    
@@ -104,7 +113,7 @@ function Cadastro(){
             message: 'Por favor confirme sua senha!',
           },
           ({ getFieldValue }) => ({
-            validator(rule, value) {
+            validator(value) {
               if (!value || getFieldValue('password') === value) {
                 return Promise.resolve();
               }
@@ -139,10 +148,23 @@ function Cadastro(){
         <Button type="primary" htmlType="submit">
           Registrar
         </Button>
-      </Form.Item>
-    </Form>
+      </Form.Item>      
+    </Form>   
     </Content>
+<<<<<<< HEAD
       <Footer />
+=======
+
+
+    </Col>
+  </Row>
+     
+        
+        
+     
+    <Footer></Footer>
+ 
+>>>>>>> 2b9cc0f4958d72955027cf5112c9e76d798fcff7
     </div>
   </Layout>
   )
