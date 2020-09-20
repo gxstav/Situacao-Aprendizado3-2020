@@ -5,7 +5,7 @@ const { Content } = Layout;
 
 function feed() {
     return(
-        <layout>
+        <Layout>
             <Content> 
             <div id="container">
 
@@ -18,7 +18,7 @@ function feed() {
                     </Descriptions.Item>
                 </Descriptions></div>
             </Content>
-        </layout>
+        </Layout>
     )
 }
 export default feed;

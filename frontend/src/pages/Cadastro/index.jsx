@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './styles.css';
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
-import { Form, Input, InputNumber, Button } from 'antd';
+import { Form, Input, Button } from 'antd';
 import { Layout } from 'antd';
 
 
-const { Header, Sider, Content } = Layout;
+const { Content } = Layout;
 
 /*
   const layout = {
@@ -58,7 +58,7 @@ function Cadastro(){
   }
 
   return (
-
+    <Layout>
     <div id="cadastroPage">
      <Navbar />
      <p></p>
@@ -142,9 +142,9 @@ function Cadastro(){
       </Form.Item>
     </Form>
     </Content>
-    <Footer></Footer>
- 
+      <Footer />
     </div>
+  </Layout>
   )
 }
 export default Cadastro;
