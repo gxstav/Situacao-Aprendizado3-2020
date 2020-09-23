@@ -151,9 +151,6 @@ function Cadastro(){
       </Form.Item>      
     </Form>   
     </Content>
-<<<<<<< HEAD
-      <Footer />
-=======
 
 
     </Col>
@@ -164,7 +161,6 @@ function Cadastro(){
      
     <Footer></Footer>
  
->>>>>>> 2b9cc0f4958d72955027cf5112c9e76d798fcff7
     </div>
   </Layout>
   )
