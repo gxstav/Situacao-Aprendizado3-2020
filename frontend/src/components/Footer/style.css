@@ -1,5 +1,25 @@
+a:link{
+    color: #ffffff;
+}
+a:visited {
+    color: #ffffff;
+  }
+a:hover {
+    background-color: #ffffff;
+    color: #001529;
+    border-radius:5px;
+  }
+
+a:active {
+    color: #ffffff;
+  }
 #rodape{
     background-color: #001529;
     color: #ffffff;
     text-align: center;
+}
+
+.gutter-row{
+    padding-top: 60px;
+    padding-bottom: 30px;
 }
