@@ -47,7 +47,7 @@ function footer() {
                 </Col>
                 <Col className="gutter-row" span={6}>
                     <div>
-                    <Title type="danger" level={3}>NFALE CONOSCO</Title>
+                    <Title type="danger" level={3}>FALE CONOSCO</Title>
                         <p><MailFilled /> heroes@contato.com</p>
                         <p className="iconslist"><InstagramOutlined /> <FacebookOutlined /> <YoutubeOutlined /> <LinkedinOutlined /></p>
                     </div>
