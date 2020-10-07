@@ -33,6 +33,7 @@ const meuregistro = {
 
 };
 
+
 /*
 const validateMessages = {
   required: '${label} is required!',
@@ -45,6 +46,10 @@ const validateMessages = {
   },
 };
  */
+
+function Registrado(){
+  return console.log("REGISTRADO");
+}
 
 function Cadastro(){
 
@@ -76,7 +81,7 @@ function Cadastro(){
 
     <Content style={meuregistro}>
      <Form name="cadastro" onSubmit={handleCadastro}>
-      <Form.Item name="nome" label="Nome do Responsável" rules={[{ required: true }]}>
+      <Form.Item name="nome" label="Nome do Responsável">
         <Input />    
         
         <p></p>
@@ -126,7 +131,7 @@ function Cadastro(){
       </Form.Item>
 
       </Form.Item>
-      <Form.Item name="telefone" label="Telefone" rules={[{ type: 'tel' , required: true }]}>
+      <Form.Item name="telefone" label="Telefone" type="number">
         <Input/>
       </Form.Item>
 
@@ -145,10 +150,11 @@ function Cadastro(){
         <Input.TextArea />
       </Form.Item>
       <Form.Item>
-        <Button type="primary" htmlType="submit">
+        <Button type="primary" htmlType="submit" onSubmit={Registrado()}>
           Registrar
         </Button>
-      </Form.Item>      
+      </Form.Item>
+  
     </Form>   
     </Content>
 

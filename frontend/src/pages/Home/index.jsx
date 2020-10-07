@@ -5,7 +5,7 @@ import Carousel from '../../components/Carousel'
 import Feed from '../../components/Feed'
 import Footer from '../../components/Footer'
 import Filter from '../../components/Filter'
-import { Row, Col } from 'antd';
+import { Row, Col } from 'antd'
 //
 // PODE IMPORTAR LOGOS, SVG, COMPONENTES AQUI
 //
