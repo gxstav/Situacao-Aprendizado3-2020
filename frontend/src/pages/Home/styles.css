@@ -30,3 +30,14 @@
 .group:after {
     clear: both;
 }
+
+.backtopstyle {
+    height: 40;
+    width: 40;
+    line-Height: '40px';
+    border-Radius: 4;
+    background-Color: '#000000';
+    color: '#fff';
+    text-Align: 'center';
+    font-Size: 14;
+}
