@@ -5,7 +5,7 @@ import Carousel from '../../components/Carousel'
 import Feed from '../../components/Feed'
 import Footer from '../../components/Footer'
 import Filter from '../../components/Filter'
-import { Row, Col, Typography, Button  } from 'antd';
+import { Row, Col, Typography, Button, BackTop, Pagination   } from 'antd';
 import { FireOutlined } from '@ant-design/icons'
 
 const { Title } = Typography;
@@ -27,10 +27,14 @@ function Home(){
               </div>
               </div>
                 <hr />
+                <BackTop>
+                <div className="backtopstyle">UP</div>
+                 </BackTop>
               <div>
                 <Feed />
                 <Feed />
-                <Feed />
+                <Feed /> 
+                <Pagination defaultCurrent={1} total={1000} />
               </div>
             </Col>
             <Col span={8} className="containerfilter">
@@ -40,7 +44,9 @@ function Home(){
             </Col>
           </Row>
     <Footer />
+ 
     </div>
+   
   )
 }
 export default Home;

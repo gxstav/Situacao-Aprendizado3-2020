@@ -1,3 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Secular+One&display=swap");
+
+@font-face{
+    font-family: 'Secular One', sans-serif;
+    src: url("https://fonts.googleapis.com/css2?family=Secular+One&display=swap");
+}
+
 #container {
     width: auto;
     height: auto;
@@ -5,4 +12,9 @@
     padding: 50px;
     margin: 20px;
     background-color:  #ffffff;
+}
+
+.pictures{
+    width: 520;
+    height: 180;
 }
