@@ -1,6 +1,7 @@
 import React from 'react'
 import './style.css';
 import { Descriptions, Progress, Button  } from 'antd';
+import { RiseOutlined } from '@ant-design/icons'
 
 function Case (){
     return(
@@ -14,7 +15,7 @@ function Case (){
             <Descriptions.Item label="LOCAL"> localização</Descriptions.Item>
         </Descriptions>
         <div className="Progress">
-            <h2>Andamento do projeto</h2>
+            <h2><RiseOutlined />  Andamento do projeto</h2>
                 <p>doações efetuadas</p>
                 <Progress percent={30} />
                 <p>novos voluntários</p>

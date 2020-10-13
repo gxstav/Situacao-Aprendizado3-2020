@@ -7,34 +7,26 @@ import './style.css';
 
 const { Content } = Layout;
 
-const contentStyle = {
-    height: '280px',
-    color: '#fff',
-    lineHeight: '280px',
-    textAlign: 'center',
-    background: '#364d79',
-  };
 
 function carousel (){
     return(
     <Layout>
-      <Content id="content">
-      <Carousel autoplay >
+        <Content id="content">
+        <Carousel autoplay >
             <div >
-                <img src = {banner1} alt="" style={contentStyle}/>
+                <img src = {banner1} alt=""  className="contentstyle" />
             </div>
             <div >
-                <img src = {banner2} alt="" style={contentStyle}/>
+                <img src = {banner2} alt="" className="contentstyle"/>
             </div>
             <div >
-                <img src = {banner3} alt=""style={contentStyle}/>
+                <img src = {banner3} alt="" className="contentstyle"/>
             </div>
             <div >
-                <img src = {banner2} alt=""style={contentStyle}/>
+                <img src = {banner2} alt="" className="contentstyle"/>
             </div>
-  </Carousel>
+        </Carousel>
         </Content>
-    
     </Layout>
 
     )}

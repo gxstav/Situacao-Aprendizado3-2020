@@ -72,7 +72,7 @@ function Cadastro(){
      <p></p>
      <Row>
     <Col span={18} push={6}>
-    <img src="../logo.jpg" width={700}></img>
+    <img src="../logo.jpg" alt="Heroes" width={700}></img>
     </Col>
     <Col span={6} pull={120}>
       
