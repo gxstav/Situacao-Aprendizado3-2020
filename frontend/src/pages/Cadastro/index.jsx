@@ -27,12 +27,13 @@ const meuregistro = {
   width: "50%",
   height: "50%",
   margin: 0,
-  padding: 0
-  
-  
+  padding: 0  
 
 };
 
+const formstyle = {
+  color: "white"
+};
 
 /*
 const validateMessages = {
@@ -46,6 +47,7 @@ const validateMessages = {
   },
 };
  */
+
 
 function Registrado(){
   return console.log("REGISTRADO");
@@ -70,32 +72,34 @@ function Cadastro(){
      
      <h1 style={mystyle}>Cadastro</h1>
      <p></p>
-     <Row>
-    <Col span={18} push={6}>
+     
+    <Col span={18} push={6}> 
     <img src="../logo.jpg" alt="Heroes" width={700}></img>
     </Col>
-    <Col span={6} pull={120}>
-      
+     
+    <Col span={18} push={6}> 
 
-    Preencha os campos abaixo:
+    <b>Preencha os campos abaixo: </b>
+    
+    <p></p>
 
     <Content style={meuregistro}>
      <Form name="cadastro" onSubmit={handleCadastro}>
-      <Form.Item name="nome" label="Nome do Responsável">
-        <Input />    
-        
+      <Form.Item name="nome" style={formstyle}>      
+        <Input placeholder='Nome do Responsável'/>    
+        </Form.Item>
         <p></p>
+      
         <Form.Item
-        name="email" label="Email da ONG ou Responsável" rules={[{ type: 'email', message: 'Este não é um email válido!',},{ required: true, message: 'Por favor insira seu email!',
+        name="email" rules={[{ type: 'email', message: 'Este não é um email válido!',},{ required: true, message: 'Por favor insira seu email!',
           },
         ]}
       >
-        <Input />
+        <Input placeholder='Email da ONG ou Responsável'/>
       </Form.Item>
 
       <Form.Item
-        name="password"
-        label="Senha"
+        name="password"        
         rules={[
           {
             required: true,
@@ -104,12 +108,11 @@ function Cadastro(){
         ]}
         hasFeedback
       >
-        <Input.Password />
+        <Input.Password placeholder='Senha'/>
       </Form.Item>
 
       <Form.Item
-        name="confirm"
-        label="Confirmar Senha"
+        name="confirm"       
         dependencies={['password']}
         hasFeedback
         rules={[
@@ -119,32 +122,32 @@ function Cadastro(){
           },
           ({ getFieldValue }) => ({
             validator(value) {
-              if (!value || getFieldValue('password') === value) {
+              if (value || getFieldValue('password') === value) {
                 return Promise.resolve();
-              }
-              return Promise.reject('The two passwords that you entered do not match!');
+              }else{
+              return Promise.reject('The two passwords that you entered do not match!');}
             },
           }),
         ]}
       >
-        <Input.Password />
+        <Input.Password placeholder='Confirmar Senha' />
       </Form.Item>
 
-      </Form.Item>
-      <Form.Item name="telefone" label="Telefone" type="number">
-        <Input/>
-      </Form.Item>
-
-      <Form.Item name="cidade" label="Cidade" rules={[{ required: true }]}>
-        <Input />
+      
+      <Form.Item name="telefone" type="number">
+        <Input placeholder='Telefone'/>
       </Form.Item>
 
-      <Form.Item name="estado" label="Estado" rules={[{ required: true }]}>
-        <Input />
+      <Form.Item name="cidade" rules={[{ required: true }]}>
+        <Input placeholder='Cidade' />
       </Form.Item>
 
-      <Form.Item name="site" label="Site da ONG">
-        <Input />
+      <Form.Item name="estado" rules={[{ required: true }]}>
+        <Input placeholder='Estado'/>
+      </Form.Item>
+
+      <Form.Item name="site">
+        <Input placeholder='Site da ONG (opcional)' />
       </Form.Item>
       <Form.Item name="descricao" label="Descrição" rules={[{ required: true }]}>
         <Input.TextArea />
@@ -153,14 +156,17 @@ function Cadastro(){
         <Button type="primary" htmlType="submit" onSubmit={Registrado()}>
           Registrar
         </Button>
-      </Form.Item>
-  
+      </Form.Item> 
+       
+       
+     
     </Form>   
+    
     </Content>
 
 
     </Col>
-  </Row>
+  
      
         
         
