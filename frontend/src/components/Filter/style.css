@@ -1,4 +1,12 @@
-#container {
-    padding: 5px, 5px, 5px, 5px;
+.site-layout-background{
+    background-color: white;
+}
+.typehelp{
+    padding: 20px;
+    text-align: center;
+}
+.titletype{
+    padding-top: 40px;
+    padding-bottom: 15px;
     text-align: center;
 }

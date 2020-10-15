@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap');
+
+@font-face {
+    font-family: 'Cabin';
+    src: local('Cabin'), url(https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap);
+  }
+
 #homePage {
     width: 100%;
 }
@@ -12,16 +19,22 @@
     float: left;
     padding-top: 10px;
     padding-left: 25px;
+    color: #ffff;
+    font-family: 'Cabin', sans-serif;
 
 }
 
 .buttonproject{
     float: right;
-    padding-top: 18px;
+    padding-top: 10px;
     padding-right: 15px;
+    text-align: center;
 
 }
-
+.group{
+    background-color: rgba(55, 79, 99, 0.7);
+    
+    }
 .group:before,
 .group:after {
     content: "";
@@ -40,4 +53,12 @@
     color: '#fff';
     text-Align: 'center';
     font-Size: 14;
+}
+.containerfilter{
+    padding: 20px;
+    background-color:  #d1d9de;
+}
+.buttonsfilter{
+    width: auto;
+    height: auto;
 }

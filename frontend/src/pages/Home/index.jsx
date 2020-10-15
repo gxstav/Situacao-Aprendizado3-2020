@@ -5,10 +5,10 @@ import Carousel from '../../components/Carousel'
 import Feed from '../../components/Feed'
 import Footer from '../../components/Footer'
 import Filter from '../../components/Filter'
-import { Row, Col, Typography, Button, BackTop, Pagination   } from 'antd';
-import { FireOutlined } from '@ant-design/icons'
+import { Row, Col, Button, BackTop, Pagination   } from 'antd';
+import { DownCircleOutlined, PlusOutlined  } from '@ant-design/icons'
 
-const { Title } = Typography;
+
 
 function Home(){
 
@@ -19,11 +19,9 @@ function Home(){
           <Row>
             <Col span={16} className="containerfeed">
               <div className ='group'>
-              <div className="titlepage">
-                <Title level={2}> <FireOutlined /> ÚLTIMOS PROJETOS</Title>
-              </div>
+                <h2 className="titlepage">   <DownCircleOutlined /> ÚLTIMOS PROJETOS </h2>
               <div className="buttonproject">
-                <Button type="primary">Novo projeto</Button>
+                <Button type="primary"><PlusOutlined />Novo projeto</Button>
               </div>
               </div>
                 <hr />
@@ -38,7 +36,7 @@ function Home(){
               </div>
             </Col>
             <Col span={8} className="containerfilter">
-              <div>
+              <div className="buttonsfilter">
                 <Filter />
               </div>
             </Col>

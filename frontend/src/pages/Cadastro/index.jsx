@@ -2,7 +2,7 @@ import React from 'react';
 import './styles.css';
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
-import { Form, Input, Button, Row, Col } from 'antd';
+import { Form, Input, Button, Col } from 'antd';
 import { Layout } from 'antd';
 
 

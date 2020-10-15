@@ -14,7 +14,8 @@
     background-color:  #ffffff;
 }
 
-.pictures{
-    width: 520;
-    height: 180;
+.imagecase{
+    width: 700px;
+    height: auto;
+    padding-bottom: 15px;
 }

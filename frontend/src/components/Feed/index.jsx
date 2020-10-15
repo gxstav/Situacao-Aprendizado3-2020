@@ -1,6 +1,5 @@
 import React from 'react'
-import fotoong from '../../assets/images/ongprojeto.jpg'
-import { Layout, Descriptions, Tag, Tabs, Statistic, Button  } from 'antd';
+import { Layout, Descriptions, Tabs, Statistic, Button } from 'antd';
 import { LikeOutlined, ShareAltOutlined } from '@ant-design/icons';
 import './style.css';
 const { Content } = Layout;
@@ -12,7 +11,11 @@ function feed() {
         <Layout>
             <Content> 
             <div id="container">
+             {/* <div >
+                <img src = {imagemcaso} alt="" className="imagecase"/>
+            </div> */}
             <Tabs defaultActiveKey="1">
+
                 <TabPane tab="Descrição" key="1">
                     <Descriptions title="NOME DO PROJETO">
                         <Descriptions.Item label="Projeto">Pata voluntária</Descriptions.Item>
