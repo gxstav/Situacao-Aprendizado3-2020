@@ -2,22 +2,3 @@
     height: auto;
     width: 100%;
 }
-
-.share{
-    float: right;
-    font-size: x-large;
-    padding-left: 15px;
-}
-
-.like{
-    float: right;
-    font-size: x-large;
-}
-
-.buttonsproject{
-    float: left;
-
-}
-.groupbuttons{
-    clear: both;
-}

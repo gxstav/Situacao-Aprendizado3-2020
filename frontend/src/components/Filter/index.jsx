@@ -19,7 +19,7 @@ function filtro (){
 
     return(
         
-        <Layout>
+        <Layout theme>
         <Sider width={410} className="site-layout-background">
         <Search
             placeholder="Procure um projeto"

@@ -9,13 +9,43 @@
     width: auto;
     height: auto;
     border: 0.5px solid #d6d6c2;
-    padding: 50px;
+    padding-top: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 50px;
     margin: 20px;
     background-color:  #ffffff;
 }
+.share{
+    float: right;
+    font-size: x-large;
+    padding-left: 15px;
+}
 
-.imagecase{
-    width: 700px;
-    height: auto;
-    padding-bottom: 15px;
+.like{
+    float: right;
+    font-size: x-large;
+}
+
+.buttonsproject{
+    float: left;
+
+}
+.groupbuttons{
+    clear: both;
+    padding-top: 20px;
+}
+
+.imageico {
+    width: 30%;
+    float: left;
+}
+.contentcase{
+    width: 70%;
+    text-align: left;
+    float: left;
+}
+
+.contentgroup{
+    clear: both;
 }
