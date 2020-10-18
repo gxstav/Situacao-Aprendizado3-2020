@@ -8,7 +8,8 @@
 #container {
     width: auto;
     height: auto;
-    border: 0.5px solid #d6d6c2;
+    border: 1px solid #d6d6c2;
+    border-radius: 5px;
     padding-top: 30px;
     padding-left: 20px;
     padding-right: 20px;

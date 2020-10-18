@@ -12,15 +12,12 @@ const { Title } = Typography;
 function footer() {
     return(
         <Layout>
-            <Footer id='rodape'>
+        <Footer id='rodape'>
             <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
                 <Col className="gutter-row" span={6}>
-                    <div> 
                         <img src = {logoheroes} alt=""/>
-                    </div>
                 </Col>
                 <Col className="gutter-row" span={6}>
-                    <div>
                     <Title type="danger" level={3}>SOBRE A HEROES</Title>
                     <a href="#">Faça parte do projeto</a>
                         <br></br>
@@ -31,10 +28,8 @@ function footer() {
                         <a href="#">Suporte</a>
                         <br></br>
                         <a href="#">Politica de privacidade</a>
-                    </div>
                 </Col>
                 <Col className="gutter-row" span={6}>
-                    <div >
                     <Title type="danger" level={3}>NOSSOS PROJETOS</Title>
                         <a href="#"> Eventos </a>
                         <br></br>
@@ -43,13 +38,12 @@ function footer() {
                         <a href="#"> Projetos </a>
                         <br></br>
                         <a href="#">Ser um Voluntário</a>
-                    </div>
                 </Col>
                 <Col className="gutter-row" span={6}>
                     <div>
                     <Title type="danger" level={3}>FALE CONOSCO</Title>
                         <p><MailFilled /> heroes@contato.com</p>
-                        <p className="iconslist"><InstagramOutlined /> <FacebookOutlined /> <YoutubeOutlined /> <LinkedinOutlined /></p>
+                        <div className="icons"><InstagramOutlined /> <FacebookOutlined /> <YoutubeOutlined /> <LinkedinOutlined /></div>
                     </div>
                 </Col>
             </Row>

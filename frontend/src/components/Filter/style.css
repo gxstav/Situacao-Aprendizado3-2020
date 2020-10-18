@@ -1,13 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap');
+
+@font-face {
+    font-family: 'Cabin';
+    src: local('Cabin'), url(https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap);
+  }
+
+#filter {
+    width: 100%;
+    height: auto;
+    background-color: white;
+    border: 5px, solid, white;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-left: 10px;
+    font-family: 'Cabin', sans-serif;
+    box-shadow: 1px;
+    
+}
 .site-layout-background{
     background-color: white;
-    padding-top: 5px;
+ 
 }
 .typehelp{
-    padding: 20px;
-    text-align: center;
+    padding-bottom: 5px;
+    text-align: left;
+    background-color: white;
+    
 }
 .titletype{
-    padding-top: 40px;
-    padding-bottom: 15px;
-    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 5px;
+    text-align: left;
+    padding-left: 8px;
+    font-family: 'Cabin', sans-serif;
+    background-color: white;
 }
+.type{
+    float: right;
+    width: 50%;
+    padding-bottom: 10px;
+    background-color: white;
+
+}
+.filtro{
+    float: right;
+    width: 50%;
+    padding-bottom: 20px;
+    background-color: white;
+}
+.inputsearch{
+    padding-top: 20px;
+    padding-bottom: 30px;
+    margin-bottom: 50px;
+}
+.localization{
+    background-color: white;
+    padding-bottom: 30px;
+}
+
+

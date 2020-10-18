@@ -47,11 +47,11 @@
 .backtopstyle {
     height: 40;
     width: 40;
-    line-Height: '40px';
+    line-Height: 40px;
     border-Radius: 4;
-    background-Color: '#000000';
-    color: '#fff';
-    text-Align: 'center';
+    background-Color: #FF4D4F;
+    color: #fff;
+    text-Align: center;
     font-Size: 14;
 }
 .containerfilter{
@@ -61,4 +61,7 @@
 .buttonsfilter{
     width: auto;
     height: auto;
+}
+.pagestep{
+    padding: 30px;
 }
