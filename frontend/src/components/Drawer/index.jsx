@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Drawer, Form, Button, Col, Row, Input, Select, DatePicker } from 'antd';
 import './style.css';
 
@@ -9,15 +9,17 @@ const { Option } = Select;
 
   function drawer(){  
 
-      const setState = '';
-    
+
+   const setState = '';    
+        
       const showDrawer = () => 
           setState.visible(true);
         ;
       
-      const onClose = () => {
-          setState.visible(false);
-        };
+        const onClose = () =>
+          setState.visible(false)
+        ;
+            
     
     return (
       <>        

@@ -5,11 +5,11 @@ import './style.css';
 import Cadastro from '../../pages/Cadastro';
 import iconheroes from '../../assets/images/iconheroes.png'
 
-
 const { Header } = Layout;
 
 
-function navbar(){
+function navbar(){ 
+
   return(
    
   <Layout id="layout">
