@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Secular+One&display=swap");
+
+@font-face{
+    font-family: 'Secular One', sans-serif;
+    src: url("https://fonts.googleapis.com/css2?family=Secular+One&display=swap");
+}
+h1, h3{
+    font-family: 'Secular One', sans-serif;
+}
+p{
+    padding-top: 10px;
+}
+
+#Aboutpage{
+    width: 100%;
+}
+.description{
+    margin-left: 80px;
+    margin-right: 80px;
+    padding-bottom: 40px;
+    font-size: medium;
+}
+
+.containerBase{
+    padding: 40px;
+    margin: 60px;
+    background-color: #E4E4E4 ;
+    text-align: center;
+    border: 1px solid #E4E4E4 ;
+    border-radius: 5px;
+    
+}
