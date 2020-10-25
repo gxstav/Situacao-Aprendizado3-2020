@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './styles.css';
 import Navbar from '../../components/Navbar'
 import Carousel from '../../components/Carousel'
-import Drawer from '../../components/Drawer'
+// import Drawer from '../../components/Drawer'
 import Feed from '../../components/Feed'
 import Footer from '../../components/Footer'
 import Filter from '../../components/Filter'
@@ -20,9 +20,9 @@ function Home(){
         setCount(drawer)
       };
       
-      function onClose(){
-          setCount(count)
-        };
+      // function onClose(){
+      //     setCount(count)
+      //   };
 
 
 

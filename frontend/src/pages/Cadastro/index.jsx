@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './styles.css';
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
@@ -26,14 +26,21 @@ const validateMessages = {
   },
 };
  */
-function Registrado(){
-  return console.log("REGISTRADO");
-}
 function Cadastro(){
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [phone, setPhone] = useState('')
+  const [city, setCity] = useState('')
+  const [uf, setUF] = useState('')
+  const [url, setUrl] = useState('')
+  const [about, setAbout] = useState('')
+
   async function handleCadastro(event) {
     event.preventDefault()
     try {
-      // api request to save data.
+      const data = { name, email, password, phone, city, uf, url, about }
+      console.log(data)
     } catch (error) {
       alert('Erro ao cadastrar, tente novamente.')
     }
@@ -49,21 +56,21 @@ return (
          <Row>
          <Col span={12} className="cadastroimage"> 
            <div >
-             <img src = {herocadastro} alt=""  />
+             <img src={herocadastro} alt="Heroes"/>
            </div>
          </Col>
          <Col span={12} className="form">
             <div className="formEdit">
               <h2>Preencha os campos abaixo:</h2>
-              <Form name="cadastro" onSubmit={handleCadastro}>
+              <Form name="cadastro">
               <Form.Item name="nome">      
-              <Input placeholder='Nome do Responsável'/>    
+              <Input placeholder='Nome da ONG' value={name} onChange={event => setName(event.target.value)}/>    
                </Form.Item>
                   <Form.Item name="email" rules={[{ type: 'email', message: 'Este não é um email válido!',},{ required: true, message: 'Por favor insira seu email!',
                     },
                   ]}
                 >
-                  <Input placeholder='Email da ONG ou Responsável'/>
+                  <Input placeholder='Email da ONG ou Responsável' value={email} onChange={event => setEmail(event.target.value)}/>
                 </Form.Item>
 
                 <Form.Item
@@ -76,7 +83,7 @@ return (
                   ]}
                   hasFeedback
                 >
-                  <Input.Password placeholder='Senha'/>
+                  <Input.Password placeholder='Senha' value={password} onChange={event => setPassword(event.target.value)}/>
                 </Form.Item>
 
                 <Form.Item name="confirm" dependencies={['password']} hasFeedback rules={[
@@ -97,31 +104,29 @@ return (
                   <Input.Password placeholder='Confirmar Senha' />
                 </Form.Item>
 
-                <Form.Item name="telefone" type="number">
-                  <Input placeholder='Telefone'/>
+                <Form.Item name="telefone" type="number" rules={[{ required: true }]}>
+                  <Input placeholder='Telefone'value={phone} onChange={event => setPhone(event.target.value)}/>
                 </Form.Item>
 
                 <Form.Item name="cidade" rules={[{ required: true }]}>
-                  <Input placeholder='Cidade' />
+                  <Input placeholder='Cidade' value={city} onChange={event => setCity(event.target.value)}/>
                 </Form.Item>
 
                 <Form.Item name="estado" rules={[{ required: true }]}>
-                  <Input placeholder='Estado'/>
+                  <Input placeholder='Estado' value={uf} onChange={event => setUF(event.target.value)}/>
                 </Form.Item>
 
                 <Form.Item name="site">
-                  <Input placeholder='Site da ONG (opcional)' />
+                  <Input placeholder='Site da ONG (opcional)' value={url} onChange={event => setUrl(event.target.value)}/>
                 </Form.Item>
 
                 <Form.Item name="descricao" label="Descrição" rules={[{ required: true }]}>
-                  <Input.TextArea />
+                  <Input.TextArea value={about} onChange={event => setAbout(event.target.value)}/>
                 </Form.Item>
-
-                <Form.Item>
-                  <Button type="primary" htmlType="submit" onSubmit={Registrado()}>
-                    Registrar
-                  </Button>
-                </Form.Item> 
+                
+                <Button type="primary" htmlType="submit" onClick={handleCadastro}>
+                  Registrar
+                </Button>
               </Form>  
             </div>
          </Col>

@@ -19,25 +19,25 @@ function footer() {
                 </Col>
                 <Col className="gutter-row" span={6}>
                     <Title type="danger" level={3}>SOBRE A HEROES</Title>
-                    <a href="#">Faça parte do projeto</a>
+                        <a href="/projeto">Faça parte do projeto</a>
                         <br></br>
-                        <a href="#">Conheça a equipe</a>
+                        <a href="/equipe">Conheça a equipe</a>
                         <br></br>
-                        <a href="#">Como surgiu o projeto</a>
+                        <a href="/sobre">Como surgiu o projeto</a>
                         <br></br>
-                        <a href="#">Suporte</a>
+                        <a href="/suporte">Suporte</a>
                         <br></br>
-                        <a href="#">Politica de privacidade</a>
+                        <a href="/policy">Politica de privacidade</a>
                 </Col>
                 <Col className="gutter-row" span={6}>
                     <Title type="danger" level={3}>NOSSOS PROJETOS</Title>
-                        <a href="#"> Eventos </a>
+                        <a href="/eventos"> Eventos </a>
                         <br></br>
-                        <a href="#"> Locais </a>
+                        <a href="/locais"> Locais </a>
                         <br></br>
-                        <a href="#"> Projetos </a>
+                        <a href="/projetos"> Projetos </a>
                         <br></br>
-                        <a href="#">Ser um Voluntário</a>
+                        <a href="/voluntario">Ser um Voluntário</a>
                 </Col>
                 <Col className="gutter-row" span={6}>
                     <div>
