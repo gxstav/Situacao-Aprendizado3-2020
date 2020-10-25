@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { Link , useHistory } from 'react-router-dom';
 import './styles.css';
-import Navbar from '../../components/Navbar'
-import Footer from '../../components/Footer'
+import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
 import { Form, Input, Button, Col, Row, PageHeader  } from 'antd';
-import herocadastro from '../../assets/images/hero.png'
+import herocadastro from '../../assets/images/hero.png';
 import { Layout } from 'antd';
+import api from '../../services/api';
 
 /*
   const layout = {
@@ -36,14 +38,24 @@ function Cadastro(){
   const [url, setUrl] = useState('')
   const [about, setAbout] = useState('')
 
+  const history = useHistory()
+
   async function handleCadastro(event) {
     event.preventDefault()
     try {
       const data = { name, email, password, phone, city, uf, url, about }
       console.log(data)
+      const response = await api.post('cadastro', data)
+      console.log(response)
+      alert(response.data.message)
+      history.push('/')
     } catch (error) {
       alert('Erro ao cadastrar, tente novamente.')
     }
+  }
+
+  function gotoHome() {
+    history.push('/')
   }
 
 return (
@@ -51,7 +63,7 @@ return (
          <div id="cadastroPage">
            <Navbar />
            <div className="site-page-header">
-            <PageHeader onBack={() => null} title="Cadastro"/>
+            <PageHeader onBack={gotoHome} title="Cadastro"/>
            </div>
          <Row>
          <Col span={12} className="cadastroimage"> 
