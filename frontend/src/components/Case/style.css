@@ -4,6 +4,9 @@
     margin: 30px;
     background-color:  #ffffff;
 }
+.HelpButton{
+    margin-right: 15px;
+}
 
 .buttons{
     text-align: right;

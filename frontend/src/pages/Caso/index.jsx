@@ -2,6 +2,7 @@ import React from 'react';
 import './style.css';
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
+import RelatedSider from '../../components/RelatedSider'
 import Case from '../../components/Case'
 import { Row, Col, Layout, PageHeader } from 'antd';
 
@@ -21,12 +22,18 @@ function Caso (){
         /></div>
             <Content>
                 <Row>
-                    <Col span={16}>
+                    <Col span={17}>
                         <Case />
                     </Col>
-                    <Col span={8}>
-                    <h1>Conheça outros projetos</h1>
-                    {/* projetos sugeridos aqui */}
+                    <Col span={7}>
+                        <div className="siderContent">
+                            <h2 className="siderText"><strong>PROJETOS SUGERIDOS</strong></h2>
+                            <hr />
+                            <RelatedSider />
+                            <RelatedSider />
+                            <RelatedSider />
+                            <RelatedSider />
+                        </div>
                     </Col>  
                     </Row>
             </Content>
