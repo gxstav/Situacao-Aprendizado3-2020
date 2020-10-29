@@ -1,17 +1,34 @@
-.buttons{
-    text-align: right;
-    padding-top: 40px;
-    margin: auto;
-    padding-right: 13px;
-}
-
 .container{
     border: 0.5px solid #d6d6c2;
-    padding: 50px;
-    margin: 20px;
+    padding: 20px;
+    margin: 30px;
     background-color:  #ffffff;
 }
+.HelpButton{
+    margin-right: 15px;
+}
 
+.buttons{
+    text-align: right;
+    padding-top: 30px;
+    padding-bottom: 5px;
+    padding-right: 10px;
+
+}
+.CardStatistic{
+    text-align: center;
+}
+.bannercase{
+    height: auto;
+    width: 100%;
+}
 .Progress{
     padding-top: 20px;
+}
+.titleproject{
+    text-align: center;
+    padding-top: 20px;
+}
+.tabsContainer{
+    text-align: center;
 }
