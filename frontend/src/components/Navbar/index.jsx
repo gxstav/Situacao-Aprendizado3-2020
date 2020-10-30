@@ -21,7 +21,7 @@ function Navbar(){
   }
 
   function gotoAbout() {
-    history.push('/about')
+    history.push('/sobre')
   }
 
   return(
