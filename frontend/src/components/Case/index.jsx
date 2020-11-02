@@ -59,7 +59,7 @@ function Case (){
             </Row> */}
         </div>
         <div className="buttons">
-            <Button type="primary" className="HelpButton">Quero ajudar</Button>
+            <Button type="primary" className="HelpButton">Quero doar</Button>
             <Button type="primary" className="VoluntaryButton">Quero me voluntariar</Button> 
         </div>
     </div>

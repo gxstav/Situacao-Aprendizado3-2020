@@ -1,0 +1,15 @@
+#ProjectPage{
+    width: 100%;
+    height: auto;
+}
+
+.backgroundContainer{
+    padding: 40px;
+    margin: 60px;
+    background-color: #E4E4E4 ;        
+    border: 1px solid #E4E4E4 ;
+    border-radius: 5px;
+}
+.newProjectButton{
+    padding-bottom: 20px;
+}

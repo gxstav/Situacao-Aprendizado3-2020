@@ -48,8 +48,8 @@ function Home(){
             <Filter />
           </div>
         </Col>
-    </Row>
-    <Footer />
+      </Row>
+      <Footer />
     </div>
    
   )

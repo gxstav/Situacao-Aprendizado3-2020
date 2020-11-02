@@ -22,7 +22,7 @@ function Navbar(){
 
   function gotoAbout() {
     history.push('/sobre')
-  }
+  } 
 
   return(
    
@@ -31,6 +31,7 @@ function Navbar(){
       <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
         <Menu.Item key="1" onClick={gotoHome}>Início</Menu.Item>
         <Menu.Item key="2" onClick={gotoAbout}>Conheça os Heroes</Menu.Item>
+        <Menu.Item key="3">Meus projetos</Menu.Item>
         <div className="signUp">
           <img src={ iconheroes } alt="Heroes"/>
           <Button id="botao" type="primary" onClick={gotoCadastro}>Cadastre-se</Button>

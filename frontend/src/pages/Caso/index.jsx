@@ -13,13 +13,10 @@ function Caso (){
     return(
     <div id="CasePage">
         <Layout>
-         <Navbar />
-         <div className="pageheader">
-         <PageHeader 
-            className="site-page-header"
-            onBack={() => null}
-            title="Projeto"
-        /></div>
+        <Navbar />
+        <div className="pageheader">
+            <PageHeader className="site-page-header" onBack={() => null} title="Projeto"/>
+        </div>
             <Content>
                 <Row>
                     <Col span={17}>
@@ -35,7 +32,7 @@ function Caso (){
                             <RelatedSider />
                         </div>
                     </Col>  
-                    </Row>
+                </Row>
             </Content>
         </Layout>
         <Footer />
