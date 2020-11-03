@@ -1,8 +1,52 @@
 import React, { useState } from 'react'
-import { Drawer, Form, Button, Col, Row, Input, Select, DatePicker } from 'antd';
+import { Drawer, Form, Button, Col, Row, Input, Select, DatePicker, Checkbox, Upload, message } from 'antd';
+import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import './style.css';
 
 const { Option } = Select;
+
+
+
+
+function getBase64(img, callback) {
+    const reader = new FileReader();
+    reader.addEventListener('load', () => callback(reader.result));
+    reader.readAsDataURL(img);
+  }
+  
+  function beforeUpload(file) {
+    const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+    if (!isJpgOrPng) {
+      message.error('You can only upload JPG/PNG file!');
+    }
+    const isLt2M = file.size / 1024 / 1024 < 2;
+    if (!isLt2M) {
+      message.error('Image must smaller than 2MB!');
+    }
+    return isJpgOrPng && isLt2M;
+  }
+  
+  class Avatar extends React.Component {
+    state = {
+      loading: false,
+    };
+  
+    handleChange = info => {
+      if (info.file.status === 'uploading') {
+        this.setState({ loading: true });
+        return;
+      }
+      if (info.file.status === 'done') {
+        // Get this url from response in real world.
+        getBase64(info.file.originFileObj, imageUrl =>
+          this.setState({
+            imageUrl,
+            loading: false,
+          }),
+        );
+      }
+    }
+  }
 
 
 
@@ -22,6 +66,10 @@ function DrawerHeroes(props) {
     }
 
 
+    function onChange(e) {
+        console.log(`checked = ${e.target.checked}`);
+      }
+
     return (
         <Drawer
             destroyOnClose="true"
@@ -33,10 +81,10 @@ function DrawerHeroes(props) {
             footer={
                 <div style={ {textAlign: 'right'} }>
                     <Button onClick={closeDrawer} style={{ marginRight: 8 }}>
-                        Cancel
+                        Cancelar
                     </Button>
                     <Button onClick={handleCaso} type="primary">
-                        Submit
+                        Adicionar Projeto
                     </Button>
                 </div>
             }
@@ -53,40 +101,17 @@ function DrawerHeroes(props) {
                     </Col>
                     <Col span={12}>
                         <Form.Item
-                            name="url"
-                            label="Site da ONG"
-                        >
-                            <Input
-                                style={{ width: '100%' }}
-                                addonBefore="http://"
-                                addonAfter=".com"
-                                placeholder="Por favor digite aqui o site da ONG"
-                            />
-                        </Form.Item>
-                    </Col>
-                </Row>
-                <Row gutter={16}>
-                    <Col span={12}>
-                        <Form.Item
-                            name="owner"
-                            label="ONG ou Responsável"
-                        >
-                            <Input placeholder="Por favor informe o responsável pelo projeto" />
-                        </Form.Item>
-                    </Col>
-                    <Col span={12}>
-                        <Form.Item
                             name="type"
-                            label="Tipo"
+                            label="Tipo de Ajuda"
                         >
-                            <Select placeholder="Please choose the type">
+                            <Select placeholder="Informe o tipo de ajuda">
                                 <Option value="refeicao">Refeição</Option>
                                 <Option value="financeiro">Financeiro</Option>
                                 <Option value="doacoes">Doações</Option>
                             </Select>
                         </Form.Item>
-                    </Col>
-                </Row>
+                    </Col>                    
+                </Row>                
                 <Row gutter={16}>
                     <Col span={12}>
                         <Form.Item
@@ -99,8 +124,8 @@ function DrawerHeroes(props) {
                     <Col span={12}>
                         <Form.Item
                             name="dateTime"
-                            label="Data"
-                            rules={[{ required: true, message: 'Please choose the dateTime' }]}
+                            label="Data de início e fim do projeto"
+                            rules={[{ required: true, message: 'Por favor insira uma data' }]}
                         >
                             <DatePicker.RangePicker
                                 style={{ width: '100%' }}
@@ -109,6 +134,29 @@ function DrawerHeroes(props) {
                         </Form.Item>
                     </Col>
                 </Row>
+                <Row gutter={16}>
+                <Col span={12}>
+                        <Form.Item
+                            name="tags"
+                            label="Tags"
+                        >
+                            <Checkbox onChange={onChange}>Financeiro</Checkbox>
+                            <Checkbox onChange={onChange}>Refeição</Checkbox>
+                            <Checkbox onChange={onChange}>Doações</Checkbox>
+                        </Form.Item>
+                    </Col>
+                    <Col span={12}>
+                        <Form.Item>
+                            <Upload name="avatar"
+                            listType="picture-card"
+                            style={{ width: '100000%' }}                                                       
+                            >Adicione uma Imagem                        
+                          </Upload>
+                        </Form.Item>
+                    </Col>
+
+                    </Row>
+                    
                 <Row gutter={16}>
                     <Col span={24}>
                         <Form.Item
