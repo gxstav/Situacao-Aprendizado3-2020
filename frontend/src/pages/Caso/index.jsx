@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import './style.css';
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
@@ -9,18 +10,39 @@ import { Row, Col, Layout, PageHeader } from 'antd';
 
 const { Content } = Layout;
 
-function Caso (){
+function Caso (props){
+
+    const history = useHistory()
+
+    function gotoHome() {
+        history.push('/')
+    }
+
+    function render(incident) {
+        if (incident) {
+            return <Case id={incident}/>
+        }
+    }
+
+    const [ incident , setIncident ] = useState(0)
+    
+    useEffect(() => {
+        const { id } = props.match.params
+        setIncident(id)
+    }, [props.match.params])
+
+
     return(
     <div id="CasePage">
         <Layout>
         <Navbar />
         <div className="pageheader">
-            <PageHeader className="site-page-header" onBack={() => null} title="Projeto"/>
+            <PageHeader className="site-page-header" onBack={gotoHome} title="Projeto"/>
         </div>
             <Content>
                 <Row>
                     <Col span={17}>
-                        <Case />
+                        {render(incident)}
                     </Col>
                     <Col span={7}>
                         <div className="siderContent">

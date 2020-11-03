@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link , useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import './styles.css';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
@@ -8,26 +8,6 @@ import herocadastro from '../../assets/images/hero.png';
 import { Layout } from 'antd';
 import api from '../../services/api';
 
-/*
-  const layout = {
-  labelCol: { span: 8 },
-  wrapperCol: { span: 16 },
-}; 
-
-*/
-
-/*
-const validateMessages = {
-  required: '${label} is required!',
-  types: {
-    email: '${label} is not validate email!',
-    number: '${label} is not a validate number!',
-  },
-  number: {
-    range: '${label} must be between ${min} and ${max}',
-  },
-};
- */
 function Cadastro(){
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -44,9 +24,8 @@ function Cadastro(){
     event.preventDefault()
     try {
       const data = { name, email, password, phone, city, uf, url, about }
-      console.log(data)
       const response = await api.post('cadastro', data)
-      console.log(response)
+
       alert(response.data.message)
       history.push('/')
     } catch (error) {

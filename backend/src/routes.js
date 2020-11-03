@@ -1,7 +1,7 @@
 const express = require('express')
 const { celebrate, Joi, Segments } = require('celebrate')
 const ong = require('./controllers/OngController')
-// const incident = require('./controllers/IncidentController')
+const incident = require('./controllers/IncidentController')
 // const profile = require('./controllers/ProfileController')
 // const session = require('./controllers/SessionController')
 const routes = express.Router()
@@ -19,6 +19,9 @@ routes.post('/cadastro', celebrate({
     about: Joi.string().required()
   })
 }), ong.create)
+
+// INCIDENT ROUTES
+routes.get('/caso/:id', incident.get)
 
 
 module.exports = routes
