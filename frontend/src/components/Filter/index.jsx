@@ -7,10 +7,11 @@ const { Sider } = Layout;
 const { Search } = Input;
 const { Option } = Select;
 
-const children = [];
-for (let i = 10; i < 36; i++) {
-  children.push(<Option key={i.toString(36) + i}>{i.toString(36) + i}</Option>);
-}
+
+function handleChange(value) {
+    console.log(`selected ${value}`);
+  }
+
 //tags para colocar: #Alimentação #Vestimentas #Atividades #Outros 
 
 function filtro (){
@@ -49,13 +50,41 @@ function filtro (){
                 <h3><strong>ESCOLHA O SEGMENTO</strong></h3>
             </div> 
             <div className= "typehelp">
-                <Select mode="multiple" allowClear style={{ width: '100%' }} placeholder="Escolher tags" defaultValue={['a10', 'c12']} onChange={handleChange}>
-                 {children}
-                </Select>
+            <Select mode="multiple" style={{ width: '100%' }} placeholder="Selecione o segmento" onChange={handleChange} optionLabelProp="label"
+  >
+                <Option value="Alimentação" label="Alimentação">
+                <div className="demo-option-label-item">
+                    <span role="img" aria-label="Alimentação">
+                    Alimentação
+                    </span>
+                </div>
+                </Option>
+                <Option value="Vestimentas" label="Vestimentas">
+                <div className="demo-option-label-item">
+                    <span role="img" aria-label="Vestimentas">
+                    Vestimentas
+                    </span>
+                </div>
+                </Option>
+                <Option value="Atividades" label="Atividades">
+                <div className="demo-option-label-item">
+                    <span role="img" aria-label="Atividades">
+                    Atividades
+                    </span>
+                </div>
+                </Option>
+                <Option value="Outros" label="Outros">
+                <div className="demo-option-label-item">
+                    <span role="img" aria-label="Outros">
+                    Outros
+                    </span>
+                </div>
+                </Option>
+            </Select>
             </div>
             <div className= "titletype">
              <h3><strong>LOCALIZAÇÃO</strong></h3>
-                <Select className= "localization" placeholder="Estado" style={{ width: '100%' }}>
+                <Select className= "localization" placeholder="UF" style={{ width: '100%' }}>
                     <Option value="">TODOS OS ESTADOS</Option>
                     <Option value="">SC</Option>
                     <Option value="">RS</Option>

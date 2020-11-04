@@ -37,7 +37,7 @@ function Caso (props){
         <Layout>
         <Navbar />
         <div className="pageheader">
-            <PageHeader className="site-page-header" onBack={gotoHome} title="Projeto"/>
+            <PageHeader className="site-page-header" onBack={gotoHome} title="PROJETO"/>
         </div>
             <Content>
                 <Row>

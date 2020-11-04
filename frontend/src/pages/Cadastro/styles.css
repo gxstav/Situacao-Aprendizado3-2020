@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap');
+
+@font-face {
+    font-family: 'Cabin';
+    src: local('Cabin'), url(https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap);
+  }
+
 #cadastroPage {
     width: 100%;  
 }
@@ -30,7 +37,15 @@
     background-color: #f5f5f0;
 }
 
-    
-    
+.buttonRegister{
+    text-align: center;
+}
+.TitleRegister{
+    padding: 10px;
+    text-align: center;
+    font-family: 'Cabin', sans-serif;
+    font-weight: bold;
+}
+ 
 
 

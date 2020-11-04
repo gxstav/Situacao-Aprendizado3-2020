@@ -42,7 +42,7 @@ return (
          <div id="cadastroPage">
            <Navbar />
            <div className="site-page-header">
-            <PageHeader onBack={gotoHome} title="Cadastro"/>
+            <PageHeader onBack={gotoHome} title="CADASTRO"/>
            </div>
          <Row>
          <Col span={12} className="cadastroimage"> 
@@ -52,7 +52,9 @@ return (
          </Col>
          <Col span={12} className="form">
             <div className="formEdit">
-              <h2>Preencha os campos abaixo:</h2>
+              <div className="TitleRegister">
+              <h2>PREENCHA OS CAMPOS ABAIXO</h2>
+              </div>
               <Form name="cadastro">
               <Form.Item name="nome">      
               <Input placeholder='Nome da ONG' value={name} onChange={event => setName(event.target.value)}/>    
@@ -114,10 +116,11 @@ return (
                 <Form.Item name="descricao" label="Descrição" rules={[{ required: true }]}>
                   <Input.TextArea value={about} onChange={event => setAbout(event.target.value)}/>
                 </Form.Item>
-                
-                <Button type="primary" htmlType="submit" onClick={handleCadastro}>
-                  Registrar
+                <div className="buttonRegister">
+                <Button type="primary" htmlType="submit" onClick={handleCadastro} size="large" >
+                   Cadastrar minha ONG 
                 </Button>
+                </div>
               </Form>  
             </div>
          </Col>

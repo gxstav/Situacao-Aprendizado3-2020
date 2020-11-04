@@ -10,11 +10,11 @@
     height: auto;
     border: 1px solid #d6d6c2;
     border-radius: 5px;
-    padding-top: 30px;
+    padding-top: 20px;
     padding-left: 20px;
     padding-right: 20px;
-    padding-bottom: 50px;
-    margin: 20px;
+    padding-bottom: 30px;
+    margin: 10px;
     background-color:  #ffffff;
 }
 .share{
@@ -38,7 +38,8 @@
 }
 
 .imageico {
-    width: 30%;
+    width: 100%;
+    height: auto;
     float: left;
 }
 .contentcase{
@@ -47,6 +48,9 @@
     float: left;
 }
 
-.contentgroup{
-    clear: both;
+.TitlteFeed{
+    padding: 5px;
+}
+.DescriptionFeed{
+    width: 100%;
 }

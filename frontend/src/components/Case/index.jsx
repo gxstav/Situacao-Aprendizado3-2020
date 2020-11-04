@@ -1,9 +1,18 @@
 import React, { useEffect } from 'react';
 import './style.css';
-import { Descriptions, Tag, Button, Tabs } from 'antd';
+import { Descriptions, Tag, Button, Tabs, Statistic } from 'antd';
+import { LikeOutlined } from '@ant-design/icons';
 import banner3 from '../../assets/images/banner3.png';
 import api from '../../services/api';
+
 const { TabPane } = Tabs;
+const { Countdown } = Statistic;
+const deadline = Date.now() + 1000 * 60 * 60 * 24 * 2 + 1000 * 30; 
+
+function onFinish() {
+  console.log('finished!');
+}
+
 
 function Case (props){
 
@@ -46,14 +55,14 @@ function Case (props){
                     </Descriptions>
                 </TabPane>
             </Tabs>
-        <div className="CardStatistic">
-        </div>
+        <div className="LikeButtonsGroup">
+            <Statistic title="Curtidas" className="LikeContent" value={1128} prefix={<LikeOutlined />} />
         <div className="buttons">
             <Button type="primary" className="HelpButton">Quero doar</Button>
             <Button type="primary" className="VoluntaryButton">Quero me voluntariar</Button> 
         </div>
+        </div>
     </div>
-
     )
 }
 export default Case;

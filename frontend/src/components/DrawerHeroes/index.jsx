@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Drawer, Form, Button, Col, Row, Input, Select, DatePicker, Checkbox, Upload, message } from 'antd';
-import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import './style.css';
 
 const { Option } = Select;
@@ -116,9 +115,9 @@ function DrawerHeroes(props) {
                     <Col span={12}>
                         <Form.Item
                             name="approver"
-                            label="Meta"
+                            label="Endereço"
                         >
-                            <Input placeholder="Defina uma meta" />
+                            <Input placeholder="Rua fulaninha, 456, 201C" />
                         </Form.Item>
                     </Col>
                     <Col span={12}>
@@ -137,12 +136,13 @@ function DrawerHeroes(props) {
                 <Row gutter={16}>
                 <Col span={12}>
                         <Form.Item
-                            name="tags"
-                            label="Tags"
+                            name="Segmento"
+                            label="Segmento"
                         >
-                            <Checkbox onChange={onChange}>Financeiro</Checkbox>
-                            <Checkbox onChange={onChange}>Refeição</Checkbox>
-                            <Checkbox onChange={onChange}>Doações</Checkbox>
+                            <Checkbox onChange={onChange}>Alimentação</Checkbox>
+                            <Checkbox onChange={onChange}>Vestimentas</Checkbox>
+                            <Checkbox onChange={onChange}>Atividades</Checkbox>
+                            <Checkbox onChange={onChange}>Outros</Checkbox>
                         </Form.Item>
                     </Col>
                     <Col span={12}>
