@@ -7,6 +7,9 @@
     margin-right: 1.5em;
 }
 
+.signUp #login{
+    margin-right: 1.3em;
+}
 
 #layout{
     background-color: blueviolet;
@@ -15,3 +18,28 @@
 #avatar{
     margin: 10,5,3,0;
 }
+
+#entrar{    
+    width: 490px;
+}
+
+#querocadastrar{
+    width: 490px;
+    background-color: azure;
+    color: black;
+    border-color: rgb(185, 185, 185);
+}
+
+#logobanner{
+    width: 65%;
+    margin-left: 6em;
+}
+
+#avatar2{
+    margin-left: 1em;
+}
+
+#fechar{
+    margin-left: 15em;    
+}
+

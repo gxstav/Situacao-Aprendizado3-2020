@@ -5,8 +5,9 @@ import Carousel from '../../components/Carousel'
 import Feed from '../../components/Feed'
 import Footer from '../../components/Footer'
 import Filter from '../../components/Filter'
-import { Row, Col, BackTop, Pagination,  } from 'antd';
+import { Row, Col, BackTop, Pagination  } from 'antd';
 import { DownCircleOutlined, UpOutlined  } from '@ant-design/icons'
+import Login from '../../components/Login'
 
 
 function Home(){
@@ -22,7 +23,7 @@ function Home(){
   return (
     <div id="homePage">
       <Navbar />          
-      <Carousel />
+      <Carousel />      
       <Row>
         <Col span={16} className="containerfeed">
           <div className ='group'>

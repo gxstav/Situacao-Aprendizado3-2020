@@ -7,6 +7,28 @@ import DrawerHeroes from '../../components/DrawerHeroes'
 import { Layout, Button } from 'antd';
 import { PlusOutlined  } from '@ant-design/icons'
 
+function Novo(){
+
+  return(alert("TESTE"))
+}
+
+class App extends React.Component {
+  state = { visible: false, childrenDrawer: false };
+
+  showDrawer = () => {
+    this.setState({
+      visible: true,
+    });
+  };
+
+  onClose = () => {
+    this.setState({
+      visible: false,
+    });
+  }; 
+  
+}
+
 
 function Projetos (){
     return(
@@ -16,7 +38,7 @@ function Projetos (){
             <DrawerHeroes/>
                 <div className ="backgroundContainer">
                     <div className ="newProjectButton">
-                        <Button type="primary"><PlusOutlined /> Novo projeto</Button>
+                        <Button type="primary" onClick={Novo}><PlusOutlined /> Novo projeto</Button>
                     </div>
                     <hr />
                     <br />
