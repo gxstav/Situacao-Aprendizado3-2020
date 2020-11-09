@@ -2,9 +2,26 @@ const express = require('express')
 const { celebrate, Joi, Segments } = require('celebrate')
 const ong = require('./controllers/OngController')
 const incident = require('./controllers/IncidentController')
-// const profile = require('./controllers/ProfileController')
-// const session = require('./controllers/SessionController')
+const auth = require('./controllers/AuthController')
+
 const routes = express.Router()
+
+//AUTH ROUTE
+routes.post('/login', celebrate({
+  [Segments.BODY]: Joi.object().keys({
+    email: Joi.string().required().email(),
+    password: Joi.string().required()
+  })
+}), auth.login)
+
+
+
+routes.post('/token', celebrate({
+  [Segments.HEADERS]: Joi.object().keys({
+    authorization: Joi.string().required()
+  })
+}), auth.refresh)
+
 
 // ONG ROUTES
 routes.post('/cadastro', celebrate({
@@ -21,7 +38,11 @@ routes.post('/cadastro', celebrate({
 }), ong.create)
 
 // INCIDENT ROUTES
-routes.get('/caso/:id', incident.get)
+// routes.post('/projetos', incident.create)
+// routes.get('/projetos', auth.authenticate, incident.index)
+routes.get('/projetos/:id', incident.get)
+
+// routes.delete('/projeto/:id', incident.delete)
 
 
 module.exports = routes
