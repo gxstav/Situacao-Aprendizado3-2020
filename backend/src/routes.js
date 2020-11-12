@@ -38,10 +38,20 @@ routes.post('/cadastro', celebrate({
 }), ong.create)
 
 // INCIDENT ROUTES
-// routes.post('/projetos', incident.create)
+routes.post('/projetos', auth.authenticate, celebrate({
+  [Segments.BODY]: Joi.object().keys({
+    name: Joi.string().required(),
+    type: Joi.string().required(),
+    address: Joi.string().required(),
+    date_start: Joi.string().required(),
+    date_end: Joi.string().required(),
+    segment: Joi.array().required().items(Joi.string().min(1)),
+    image: Joi.string().allow(''),
+    description: Joi.string().required()
+  })
+}))
 // routes.get('/projetos', auth.authenticate, incident.index)
-routes.get('/projetos/:id', incident.get)
-
+// routes.get('/projetos/:id', incident.get)
 // routes.delete('/projeto/:id', incident.delete)
 
 
