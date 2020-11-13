@@ -6,13 +6,6 @@ import banner3 from '../../assets/images/banner3.png';
 import api from '../../services/api';
 
 const { TabPane } = Tabs;
-const { Countdown } = Statistic;
-const deadline = Date.now() + 1000 * 60 * 60 * 24 * 2 + 1000 * 30; 
-
-function onFinish() {
-  console.log('finished!');
-}
-
 
 function Case (props){
 

@@ -5,8 +5,6 @@ import './style.css';
 const { Option } = Select;
 
 
-
-
 function getBase64(img, callback) {
     const reader = new FileReader();
     reader.addEventListener('load', () => callback(reader.result));
@@ -29,7 +27,6 @@ function getBase64(img, callback) {
     state = {
       loading: false,
     };
-  
     handleChange = info => {
       if (info.file.status === 'uploading') {
         this.setState({ loading: true });

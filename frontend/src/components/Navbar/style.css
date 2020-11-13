@@ -6,6 +6,9 @@
 .signUp #botao{
     margin-right: 1.5em;
 }
+.loginStyle{
+    background-color: aquamarine;
+}
 
 .signUp #login{
     margin-right: 1.3em;
@@ -19,12 +22,8 @@
     margin: 10,5,3,0;
 }
 
-#entrar{    
-    width: 490px;
-}
-
 #querocadastrar{
-    width: 490px;
+    width: 100%;
     background-color: azure;
     color: black;
     border-color: rgb(185, 185, 185);
@@ -40,6 +39,11 @@
 }
 
 #fechar{
-    margin-left: 15em;    
+    float: right;
+    clear: right;
+}
+#entrar{
+    margin-bottom: 10px;
+    width: 100%;
 }
 
