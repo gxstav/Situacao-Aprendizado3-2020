@@ -11,6 +11,8 @@ module.exports = {
         const refreshToken = generateRefreshToken(user)
         try {
             await connection('token').insert({ refresh: refreshToken })
+            response.cookie('x-access-token', accessToken, { httpOnly: true })
+            response.cookie('x-refresh-token', refreshToken, { httpOnly: true })
         } catch (error) {
             console.log(error)
         }
@@ -18,7 +20,7 @@ module.exports = {
     },
 
     async refresh(request, response) {
-        const token = { authorization } = request.headers
+        const token = request.headers['x-refresh-token']
         const databaseRefreshToken = await connection('token').where('refresh', token)
             .catch(error => console.log(error))
 
@@ -28,18 +30,23 @@ module.exports = {
             if (error) return response.sendStatus(403)
             const user = { email, password } = data
             const newAccessToken = generateAccessToken(user)
-            response.status(200).json({ access_token: newAccessToken, refresh_token: refreshToken })
+            response.status(200).json({ access_token: newAccessToken })
         })
 
     },
 
     async logout(request, response) {
-        
+        const token = request.headers['x-refresh-token']
+        try {
+            await connection('token').where('refresh', token).del()
+        } catch (error) {
+            console.log(error)
+        }
+        return response.sendStatus(200)
     },
 
     authenticate(request, response, next) {
-        const authHeader = request.headers['authorization']
-        const token = authHeader && authHeader.split(' ')[1]
+        const token = request.headers['x-access-token']
         if (!token) return response.sendStatus(401)
 
         jwt.verify(token, process.env.SECRET_TOKEN_ACCESS, (error, user) => {

@@ -30,7 +30,7 @@ function Case (props){
                     <Descriptions layout="vertical" bordered>
                         <Descriptions.Item label="Projeto por:">Nome da ONG</Descriptions.Item> 
                         <Descriptions.Item label="Tipo de ajuda:"><Tag>Financeira</Tag><Tag>Voluntária</Tag><Tag>Divulgação</Tag></Descriptions.Item>
-                        <Descriptions.Item label="Segmento:"> <Tag>Alimentação</Tag> <Tag>Outros</Tag></Descriptions.Item>
+                        <Descriptions.Item label="Segmento:"> <Tag>Alimentação</Tag><Tag>Outros</Tag></Descriptions.Item>
                         <Descriptions.Item label="Descrição do projeto:"span={3}>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer feugiat risus bibendum justo dictum molestie. Pellentesque ac ornare velit. Mauris in quam quis lorem interdum porta. In laoreet vehicula magna eu condimentum. Praesent vel nisi dictum, fringilla elit et, dictum libero. Morbi vel justo vulputate risus vulputate finibus quis sed sapien. Donec lobortis nulla sit amet tempor tincidunt. Aenean pharetra libero eget erat placerat, vitae tempus ipsum pharetra. Aliquam in ante vel magna commodo hendrerit. Praesent gravida augue eu odio tempor pulvinar.
                         </Descriptions.Item>

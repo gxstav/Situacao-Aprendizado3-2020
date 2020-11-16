@@ -14,12 +14,16 @@ routes.post('/login', celebrate({
   })
 }), auth.login)
 
-
+routes.post('/logout', celebrate({
+  [Segments.HEADERS]: Joi.object().keys({
+    'x-refresh-token': Joi.string().required()
+  }).options({ allowUnknown: true })
+}), auth.logout)
 
 routes.post('/token', celebrate({
   [Segments.HEADERS]: Joi.object().keys({
-    authorization: Joi.string().required()
-  })
+    'x-refresh-token': Joi.string().required()
+  }).options({ allowUnknown: true })
 }), auth.refresh)
 
 
@@ -41,7 +45,7 @@ routes.post('/cadastro', celebrate({
 routes.post('/projetos', auth.authenticate, celebrate({
   [Segments.BODY]: Joi.object().keys({
     name: Joi.string().required(),
-    type: Joi.string().required(),
+    type: Joi.number().integer().required(),
     address: Joi.string().required(),
     date_start: Joi.string().required(),
     date_end: Joi.string().required(),
@@ -49,7 +53,8 @@ routes.post('/projetos', auth.authenticate, celebrate({
     image: Joi.string().allow(''),
     description: Joi.string().required()
   })
-}))
+}), incident.create)
+// routes.get('/casos', incident.index)
 // routes.get('/projetos', auth.authenticate, incident.index)
 // routes.get('/projetos/:id', incident.get)
 // routes.delete('/projeto/:id', incident.delete)
