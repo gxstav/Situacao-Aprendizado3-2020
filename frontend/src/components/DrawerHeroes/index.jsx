@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, forwardRef, useImperativeHandle } from 'react'
 import { Drawer, Form, Button, Col, Row, Input, Select, DatePicker, Checkbox, Upload, message } from 'antd';
 import './style.css';
+import ReactDOM from 'react-dom'
 
 const { Option } = Select;
 
@@ -47,12 +48,23 @@ function getBase64(img, callback) {
 
 
 
-function DrawerHeroes(props) {
+  const DrawerHeroes = forwardRef((props,ref) => {
     
-    const [drawer, setDrawer] = useState(true)
+    const [drawer, setDrawer] = useState(false)
+
+    useImperativeHandle(ref, () => {
+        return{
+            openDrawer: () => open()               
+        }
+
+    })
 
     function closeDrawer() {
         setDrawer(false)
+    }
+
+    const open = () => {
+        setDrawer(true)
     }
 
     function handleCaso() {
@@ -66,8 +78,10 @@ function DrawerHeroes(props) {
         console.log(`checked = ${e.target.checked}`);
       }
 
-    return (
-        <Drawer
+      if(drawer){       
+
+    return ReactDOM.createPortal(
+        <Drawer                       
             destroyOnClose="true"
             title="Criar Novo Projeto"
             width={720}
@@ -101,9 +115,9 @@ function DrawerHeroes(props) {
                             label="Tipo de Ajuda"
                         >
                             <Select placeholder="Informe o tipo de ajuda">
-                                <Option value="refeicao">Refeição</Option>
-                                <Option value="financeiro">Financeiro</Option>
-                                <Option value="doacoes">Doações</Option>
+                                <Option value="voluntario">Voluntária</Option>
+                                <Option value="financeira">Financeira</Option>
+                                <Option value="divulgacao">Divulgação</Option>
                             </Select>
                         </Form.Item>
                     </Col>                    
@@ -165,9 +179,9 @@ function DrawerHeroes(props) {
                     </Col>
                 </Row>
             </Form>
-        </Drawer>
-    );
-}
+        </Drawer>, document.getElementById("drawer-root")
+    )}return null;
+  });
 
 
 export default DrawerHeroes; 

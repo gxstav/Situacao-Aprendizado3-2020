@@ -12,6 +12,8 @@ function Novo(){
   return(alert("TESTE"))
 }
 
+/*
+
 class App extends React.Component {
   state = { visible: false, childrenDrawer: false };
 
@@ -29,16 +31,37 @@ class App extends React.Component {
   
 }
 
+*/
+
+
 
 function Projetos (){
+
+const [display, setDisplay] = React.useState(false)
+
+const open = () => {
+  setDisplay(true)
+}
+
+const close = () => {
+  setDisplay(false);
+}
+
+const drawerRef = React.useRef();  
+
+  const openDrawer = () => {
+    drawerRef.current.openDrawer()
+  }
+
+  
     return(
     <div id="ProjectPage">
         <Layout>
             <Navbar />
-            <DrawerHeroes/>
+            <DrawerHeroes ref={drawerRef}/>
                 <div className ="backgroundContainer">
                     <div className ="newProjectButton">
-                        <Button type="primary" onClick={Novo}><PlusOutlined /> Novo projeto</Button>
+                        <Button type="primary" onClick={openDrawer}><PlusOutlined /> Novo projeto</Button>
                     </div>
                     <hr />
                     <br />
@@ -49,5 +72,6 @@ function Projetos (){
 
     </div>
     )
-}
+} 
+
 export default Projetos;

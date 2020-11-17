@@ -5,15 +5,35 @@ import { UserOutlined, CloseOutlined } from '@ant-design/icons';
 import './style.css';
 import iconheroes from '../../assets/images/iconheroes.png';
 import Login from '../../components/Login'
-
+import { useState } from 'react';
+import api from '../../services/api';
 
 
 const { Header } = Layout;
 
 
+
+
 function Navbar(){
 
-  const history = useHistory()
+const history = useHistory()
+
+const [email, setEmail] = useState('')
+const [password, setPassword] = useState('')
+
+
+async function handleLogin(event) {
+  event.preventDefault()
+  try {
+    const data = { email, password}
+    const response = await api.post('login', data)
+
+    alert(response.data.message)
+    history.push('/')
+  } catch (error) {
+    alert('Erro ao logar, tente novamente.')
+  }
+}
 
   function gotoHome() {
     history.push('/')
@@ -61,7 +81,7 @@ function Navbar(){
           <Form name="logar" >                                 
             <Form.Item name="email" rules={[{ type: 'email', message: 'Este não é um email válido!'},
                 { required: true, message: 'Por favor insira seu email!'}]}>
-                <Input placeholder='Email da ONG ou Responsável'/>
+                <Input placeholder='Email da ONG ou Responsável' value={email} onChange={event => setEmail(event.target.value)}/>
             </Form.Item>
             <Form.Item
                 name="password"        
@@ -73,9 +93,9 @@ function Navbar(){
                     ]}
                     hasFeedback
                   >
-                    <Input.Password placeholder='Senha'/>
+                    <Input.Password placeholder='Senha' value={password} onChange={event => setPassword(event.target.value)}/>
             </Form.Item>
-              <Button id="entrar" type="primary" htmlType="submit" size="medium">
+              <Button id="entrar" type="primary" htmlType="submit" onClick={handleLogin} size="medium">
                   Entrar 
               </Button>
               <Button id="querocadastrar" type="primary" htmlType="submit" onClick={gotoCadastro} size="medium" >
