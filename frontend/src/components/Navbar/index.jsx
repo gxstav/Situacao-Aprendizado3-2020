@@ -1,109 +1,150 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useCookies } from 'react-cookie'
 import { Layout, Menu, Button, Avatar, Input, Form, Row, Col } from 'antd';
 import { UserOutlined, CloseOutlined } from '@ant-design/icons';
 import './style.css';
 import iconheroes from '../../assets/images/iconheroes.png';
-import Login from '../../components/Login'
-import { useState } from 'react';
+import Login from '../../components/Login';
 import api from '../../services/api';
-
 
 const { Header } = Layout;
 
+function Navbar(props) {
+    const history = useHistory()
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [cookie, setCookie, removeCookie] = useCookies(['x-access-token', 'x-refresh-token']) 
+    const [status, setStatus] = useState(isLogged())
+    const { displayAba } = props
+    const index = abaSelecionada(displayAba, '1')
 
+    function isLogged() {
+        const access = cookie['x-access-token']
+        const refresh = cookie['x-refresh-token']
+        return access && refresh ? true : false
+    }
 
+    function abaSelecionada(aba, home = null) {
+        if (aba) { return String(aba) }
+        if (home) { return home }
+    }
 
-function Navbar(){
+    async function handleLogin(event) {
+        event.preventDefault()
+        try {
+            const data = { email, password }
+            const response = await api.post('login', data)
+            const { access_token, refresh_token } = response.data
+            setCookie('x-access-token', access_token, { path: '/' })
+            setCookie('x-refresh-token', refresh_token, { path: '/' })
+            setStatus(true)
+            closeModal()
+            gotoHome()
+        } catch (error) {
+            alert('Erro ao logar, tente novamente.')
+        }
+    }
 
-const history = useHistory()
+    async function handleLogout(event) {
+        event.preventDefault()
+        try {
+            const token = cookie['x-refresh-token']
+            await api.delete('logout', {
+                headers: { 'x-refresh-token': token }
+            })
+            removeCookie('x-access-token')
+            removeCookie('x-refresh-token')
+            setStatus(false)
+            closeModal()
+            gotoHome()
+        } catch (error) {
+            alert('Erro ao deslogar, tente novamente.')
+        }
+    }
 
-const [email, setEmail] = useState('')
-const [password, setPassword] = useState('')
+    function gotoHome() {
+        history.push('/')
+    }
 
+    function gotoCadastro() {
+        history.push('/cadastro')
+    }
 
-async function handleLogin(event) {
-  event.preventDefault()
-  try {
-    const data = { email, password}
-    const response = await api.post('login', data)
+    function gotoAbout() {
+        history.push('/sobre')
+    }
 
-    alert(response.data.message)
-    history.push('/')
-  } catch (error) {
-    alert('Erro ao logar, tente novamente.')
-  }
+    function gotoProjects() {
+        history.push('/projetos')
+    }
+
+    const modalRef = React.useRef();
+
+    const openModal = () => {
+        modalRef.current.openModal()
+    }
+
+    const closeModal = () => {
+        modalRef.current.close()
+    }
+
+    return (
+        <Layout id="layout">
+
+            <Header>
+                <Menu theme="dark" mode="horizontal" defaultSelectedKeys={[index]}>
+                    <Menu.Item key="1" onClick={gotoHome}>Início</Menu.Item>
+                    <Menu.Item key="2" onClick={gotoAbout}>Conheça os Heroes</Menu.Item>
+                    { status && <Menu.Item key="3" onClick={gotoProjects}>Meus projetos</Menu.Item>}
+                    <div className="signUp">
+                        <img src={iconheroes} alt="Heroes" />
+                        { status ? '' : <Button id="botao" type="primary" onClick={gotoCadastro}>Cadastre-se</Button>}
+                        <Avatar id="avatar" onClick={openModal} size={44} icon={<UserOutlined />} />
+                    </div>
+                </Menu>
+                {
+                status ?
+                <Login ref={modalRef}>
+                    <Row>
+                        <h1>Logout</h1>
+                        <Col span={12}>
+                            <Avatar id="fechar" onClick={closeModal} size={25} icon={<CloseOutlined />} />
+                        </Col>
+                    </Row>
+                    <br/>
+                    <Button id="entrar" type="primary" htmlType="submit" onClick={handleLogout} size="medium">
+                        Sair
+                    </Button>
+                </Login>
+                : 
+                <Login ref={modalRef}>
+                    <Row>
+                        <h1>Login</h1>
+                        <Col span={12}>
+                            <Avatar id="fechar" onClick={() => { modalRef.current.close() }} size={25} icon={<CloseOutlined />} />
+                        </Col>
+                    </Row>
+                    <br />
+                    <Form name="logar" >
+                        <Form.Item name="email" rules={[{ type: 'email', message: 'Este não é um email válido!' },
+                            { required: true, message: 'Por favor insira seu email!' }]}>
+                            <Input placeholder='Email da ONG ou Responsável' value={email} onChange={event => setEmail(event.target.value)} />
+                        </Form.Item>
+                        <Form.Item name="password" rules={[{ required: true, message: 'Por favor insira sua senha!' }]} hasFeedback>
+                            <Input.Password placeholder='Senha' value={password} onChange={event => setPassword(event.target.value)} />
+                        </Form.Item>
+                        <Button id="entrar" type="primary" htmlType="submit" onClick={handleLogin} size="medium">
+                            Entrar
+                        </Button>
+                        <Button id="querocadastrar" type="primary" htmlType="submit" onClick={gotoCadastro} size="medium" >
+                            Quero me cadastrar
+                        </Button>
+                    </Form>
+                </Login>
+                }
+            </Header>
+        </Layout >
+    )
 }
-
-  function gotoHome() {
-    history.push('/')
-  }
-
-  function gotoCadastro() {
-    history.push('/cadastro')
-  }
-
-  function gotoAbout() {
-    history.push('/sobre')
-  }
-
-  function gotoProjects() {
-    history.push('/projetos')
-  }
-
-  const modalRef = React.useRef();  
-
-  const openModal = () => {
-    modalRef.current.openModal()
-  }
- 
-  return(
-    <Layout id="layout">
-      <Header>
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
-          <Menu.Item key="1" onClick={gotoHome}>Início</Menu.Item>
-          <Menu.Item key="2" onClick={gotoAbout}>Conheça os Heroes</Menu.Item>
-          <Menu.Item key="3" onClick={gotoProjects}>Meus projetos</Menu.Item>
-          <div className="signUp">
-            <img src={ iconheroes } alt="Heroes"/>                                          
-            <Button id="botao" type="primary" onClick={gotoCadastro}>Cadastre-se</Button>
-            <Avatar id="avatar" onClick={openModal} size={44} icon={<UserOutlined />} />
-          </div>
-        </Menu>
-        <Login ref={modalRef}>
-          <Row>
-            <h1>Login</h1>       
-            <Col span={12}>
-              <Avatar id="fechar" onClick={() =>{modalRef.current.close()}} size={25} icon={<CloseOutlined/>} />
-            </Col>
-          </Row>
-          <br /> 
-          <Form name="logar" >                                 
-            <Form.Item name="email" rules={[{ type: 'email', message: 'Este não é um email válido!'},
-                { required: true, message: 'Por favor insira seu email!'}]}>
-                <Input placeholder='Email da ONG ou Responsável' value={email} onChange={event => setEmail(event.target.value)}/>
-            </Form.Item>
-            <Form.Item
-                name="password"        
-                rules={[
-                  {
-                    required: true,
-                    message: 'Por favor insira sua senha!',
-                  },
-                    ]}
-                    hasFeedback
-                  >
-                    <Input.Password placeholder='Senha' value={password} onChange={event => setPassword(event.target.value)}/>
-            </Form.Item>
-              <Button id="entrar" type="primary" htmlType="submit" onClick={handleLogin} size="medium">
-                  Entrar 
-              </Button>
-              <Button id="querocadastrar" type="primary" htmlType="submit" onClick={gotoCadastro} size="medium" >
-                    Quero me cadastrar 
-              </Button>
-            </Form> 
-        </Login>      
-      </Header>
-    </Layout>
-  )}
 export default Navbar;

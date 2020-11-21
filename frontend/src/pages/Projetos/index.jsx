@@ -8,32 +8,8 @@ import { Layout, Button } from 'antd';
 import { PlusOutlined  } from '@ant-design/icons'
 
 function Novo(){
-
   return(alert("TESTE"))
 }
-
-/*
-
-class App extends React.Component {
-  state = { visible: false, childrenDrawer: false };
-
-  showDrawer = () => {
-    this.setState({
-      visible: true,
-    });
-  };
-
-  onClose = () => {
-    this.setState({
-      visible: false,
-    });
-  }; 
-  
-}
-
-*/
-
-
 
 function Projetos (){
 
@@ -57,7 +33,7 @@ const drawerRef = React.useRef();
     return(
     <div id="ProjectPage">
         <Layout>
-            <Navbar />
+            <Navbar displayAba="3"/>
             <DrawerHeroes ref={drawerRef}/>
                 <div className ="backgroundContainer">
                     <div className ="newProjectButton">

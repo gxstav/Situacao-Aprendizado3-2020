@@ -25,9 +25,8 @@ function Cadastro(){
     try {
       const data = { name, email, password, phone, city, uf, url, about }
       const response = await api.post('cadastro', data)
-
       alert(response.data.message)
-      history.push('/')
+      gotoHome()
     } catch (error) {
       alert('Erro ao cadastrar, tente novamente.')
     }
@@ -40,7 +39,7 @@ function Cadastro(){
 return (
     <Layout>
          <div id="cadastroPage">
-           <Navbar />
+           <Navbar displayAba="0"/>
            <div className="site-page-header">
             <PageHeader onBack={gotoHome} title="CADASTRO"/>
            </div>

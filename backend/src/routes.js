@@ -14,7 +14,7 @@ routes.post('/login', celebrate({
   })
 }), auth.login)
 
-routes.post('/logout', celebrate({
+routes.delete('/logout', celebrate({
   [Segments.HEADERS]: Joi.object().keys({
     'x-refresh-token': Joi.string().required()
   }).options({ allowUnknown: true })

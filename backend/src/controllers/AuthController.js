@@ -11,8 +11,6 @@ module.exports = {
         const refreshToken = generateRefreshToken(user)
         try {
             await connection('token').insert({ refresh: refreshToken })
-            response.cookie('x-access-token', accessToken, { httpOnly: true })
-            response.cookie('x-refresh-token', refreshToken, { httpOnly: true })
         } catch (error) {
             console.log(error)
         }
