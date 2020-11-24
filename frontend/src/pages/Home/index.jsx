@@ -7,8 +7,6 @@ import Footer from '../../components/Footer'
 import Filter from '../../components/Filter'
 import { Row, Col, BackTop, Pagination  } from 'antd';
 import { DownCircleOutlined, UpOutlined  } from '@ant-design/icons'
-import Login from '../../components/Login'
-
 
 function Home(){
 

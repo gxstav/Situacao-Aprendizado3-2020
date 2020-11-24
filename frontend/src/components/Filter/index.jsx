@@ -8,9 +8,9 @@ const { Search } = Input;
 const { Option } = Select;
 
 
-function handleChange(value) {
-    console.log(`selected ${value}`);
-  }
+// function handleChange(value) {
+//     console.log(`selected ${value}`);
+//   }
 
 //tags para colocar: #Alimentação #Vestimentas #Atividades #Outros 
 

@@ -1,7 +1,7 @@
 const express = require('express')
 const { celebrate, Joi, Segments } = require('celebrate')
 const ong = require('./controllers/OngController')
-const incident = require('./controllers/IncidentController')
+const project = require('./controllers/ProjectController')
 const auth = require('./controllers/AuthController')
 
 const routes = express.Router()
@@ -50,10 +50,9 @@ routes.post('/projetos', auth.authenticate, celebrate({
     date_start: Joi.string().required(),
     date_end: Joi.string().required(),
     segment: Joi.array().required().items(Joi.string().min(1)),
-    image: Joi.string().allow(''),
     description: Joi.string().required()
   })
-}), incident.create)
+}), project.create)
 // routes.get('/casos', incident.index)
 // routes.get('/projetos', auth.authenticate, incident.index)
 // routes.get('/projetos/:id', incident.get)

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useCookies } from 'react-cookie'
+import { useCookies } from 'react-cookie';
 import { Layout, Menu, Button, Avatar, Input, Form, Row, Col } from 'antd';
 import { UserOutlined, CloseOutlined } from '@ant-design/icons';
 import './style.css';
