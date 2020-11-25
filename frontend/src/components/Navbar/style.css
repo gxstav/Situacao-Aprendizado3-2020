@@ -39,8 +39,7 @@
 }
 
 #fechar{
-    float: right;
-    clear: right;
+    margin-left: 30em;
 }
 #entrar{
     margin-bottom: 10px;

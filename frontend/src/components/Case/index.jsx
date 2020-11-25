@@ -1,15 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './style.css';
-import { Descriptions, Tag, Button, Tabs, Statistic } from 'antd';
-import { LikeOutlined } from '@ant-design/icons';
+import { Descriptions, Tag, Button, Tabs, Statistic, Form, Row, Col, Input, Avatar } from 'antd';
+import { LikeOutlined, CloseOutlined } from '@ant-design/icons';
 import banner3 from '../../assets/images/banner3.png';
 import api from '../../services/api';
+import Voluntario from '../../components/Voluntario';
+import { useHistory } from 'react-router-dom';
 
 const { TabPane } = Tabs;
 
 function Case (props){
 
     const { id } = props
+
+    const [email, setEmail] = useState('')
+    const [phone, setPhone] = useState('')
 
     async function fetchData() {
         await api.get(`/caso/${id}`)
@@ -18,6 +23,21 @@ function Case (props){
     useEffect(() => {
         
     })
+
+
+    const modalRef = React.useRef();
+
+    const openModal = () => {
+        modalRef.current.openModal()
+    }
+
+    const closeModal = () => {
+        modalRef.current.close()
+    }
+
+    function handleVoluntario(){
+        alert("Enviado")
+    }
     
     return(
     <div id="container">
@@ -52,7 +72,32 @@ function Case (props){
             <Statistic title="Curtidas" className="LikeContent" value={1128} prefix={<LikeOutlined />} />
         <div className="buttons">
             <Button type="primary" className="HelpButton">Quero doar</Button>
-            <Button type="primary" className="VoluntaryButton">Quero me voluntariar</Button> 
+            <Button type="primary" className="VoluntaryButton" onClick={openModal}>Quero me voluntariar</Button>
+            <Voluntario ref={modalRef}>
+                    <Row>
+                        <h1>Preencha os dados</h1>
+                        <Col span={12}>
+                            <Avatar id="fechar" onClick={() => { modalRef.current.close() }} size={25} icon={<CloseOutlined />} />
+                        </Col>
+                    </Row>
+                    <br />
+                    <Form name="logar" >Email:
+                        <Form.Item name="email" rules={[{ type: 'email', message: 'Este não é um email válido!' },
+                            { required: true, message: 'Por favor insira seu email!' }]}>
+                            <Input placeholder='exemplo@email.com' value={email} onChange={event => setEmail(event.target.value)} />
+                        </Form.Item>
+                        <Form.Item name="telefone" type="number">Telefone:
+                        <Input placeholder='(XX)XXXXX-XXXX'value={phone} onChange={event => setPhone(event.target.value)}/>
+                        </Form.Item>
+                        <Form.Item name="mensagem">Escreva uma mensagem:  
+                            <Input.TextArea />                                             
+                        </Form.Item>
+                        
+                        <Button id="entrar" type="primary" htmlType="submit" onClick={handleVoluntario} size="medium">
+                            Enviar
+                        </Button>                        
+                    </Form>
+                </Voluntario>
         </div>
         </div>
     </div>

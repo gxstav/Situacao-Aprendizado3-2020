@@ -145,7 +145,7 @@ function getBase64(img, callback) {
                     </Col>
                 </Row>
                 <Row gutter={16}>
-                <Col span={12}>
+                
                         <Form.Item
                             name="Segmento"
                             label="Segmento"
@@ -155,16 +155,7 @@ function getBase64(img, callback) {
                             <Checkbox onChange={onChange}>Atividades</Checkbox>
                             <Checkbox onChange={onChange}>Outros</Checkbox>
                         </Form.Item>
-                    </Col>
-                    <Col span={12}>
-                        <Form.Item>
-                            <Upload name="avatar"
-                            listType="picture-card"
-                            style={{ width: '100000%' }}                                                       
-                            >Adicione uma Imagem                        
-                          </Upload>
-                        </Form.Item>
-                    </Col>
+                                       
 
                     </Row>
                     
