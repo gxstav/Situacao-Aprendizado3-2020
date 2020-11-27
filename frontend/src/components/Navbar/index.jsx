@@ -7,6 +7,7 @@ import './style.css';
 import iconheroes from '../../assets/images/iconheroes.png';
 import Login from '../../components/Login';
 import api from '../../services/api';
+import imagem_login from '../../assets/images/imagem_login.png';
 
 const { Header } = Layout;
 
@@ -126,6 +127,7 @@ function Navbar(props) {
                         </Col>
                     </Row>
                     <br />
+                    <img src={imagem_login} id="imagem-login"/><p></p>
                     <Form name="logar" >
                         <Form.Item name="email" rules={[{ type: 'email', message: 'Este não é um email válido!' },
                             { required: true, message: 'Por favor insira seu email!' }]}>
@@ -138,7 +140,7 @@ function Navbar(props) {
                             Entrar
                         </Button>
                         <Button id="querocadastrar" type="primary" htmlType="submit" onClick={gotoCadastro} size="medium" >
-                            Quero me cadastrar
+                            Não possui conta? Cadastre-se
                         </Button>
                     </Form>
                 </Login>

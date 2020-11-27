@@ -4,6 +4,8 @@ import { Descriptions, Tag, Button, Tabs, Statistic, Form, Input } from 'antd';
 import { ShareAltOutlined } from '@ant-design/icons';
 import api from '../../services/api';
 import Voluntario from '../../components/Voluntario';
+import Doar from '../../components/Doar';
+import pagamentos from '../../assets/images/pagamentos.png';
 import { useHistory } from 'react-router-dom';
 
 const { TabPane } = Tabs;
@@ -36,6 +38,17 @@ function Case (props){
     function handleVoluntario(){
         alert("Enviado")
     }
+
+    const doarRef = React.useRef();
+
+    const doarModal = () => {
+        doarRef.current.doarModal()
+    }
+
+    const doarClose = () => {
+        doarRef.current.doarClose()
+    }
+
     
     return(
     <div id="container">
@@ -71,7 +84,7 @@ function Case (props){
         <div className="LikeButtonsGroup">
             <Statistic title="Compartilhe!" className="ShareContent" value={1128} prefix={<ShareAltOutlined />} />
             <div className="buttons">
-                <Button type="primary" className="HelpButton">Quero doar</Button>
+                <Button type="primary" className="HelpButton" onClick={doarModal}>Quero doar</Button>
                 <Button type="primary" className="VoluntaryButton" onClick={openModal}>Quero me voluntariar</Button>
                 <Voluntario ref={modalRef}>
                     <h2>Entre em Contato</h2>
@@ -95,6 +108,10 @@ function Case (props){
                         <Button id="entrar" type="primary" htmlType="submit" onClick={handleVoluntario} size="medium">Enviar</Button>                        
                     </Form>
                 </Voluntario>
+                <Doar ref={doarRef}>
+                <h2>Em breve você poderá escolher uma das opções abaixo para efetuar a sua doação</h2>
+                <img src={pagamentos} alt="pagamentos" width="100%"></img>
+                </Doar>
             </div>
         </div>
     </div>
