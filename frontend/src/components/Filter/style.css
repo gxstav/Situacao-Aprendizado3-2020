@@ -9,18 +9,13 @@
     width: 100%;
     height: auto;
     background-color: white;
-    border: 5px, solid, white;
     border-radius: 5px;
     padding-top: 10px;
     padding-left: 10px;
     font-family: 'Cabin', sans-serif;
-    box-shadow: 1px;
-    
+  
 }
-.site-layout-background{
-    background-color: white;
- 
-}
+
 .typehelp{
     padding-bottom: 5px;
     text-align: left;

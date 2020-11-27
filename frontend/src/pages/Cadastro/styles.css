@@ -25,12 +25,14 @@
     background-color: #f5f5f0;
 }
 .formEdit{
+    background-color: white;
     width: 70%;
     margin-top: 60px;
     margin-bottom: 30px;
     padding: 20px;
     border: 1px solid #c4c4c4;
     border-radius: 8px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
 
 }
 .cadastroimage{

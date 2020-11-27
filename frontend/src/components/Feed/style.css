@@ -13,44 +13,27 @@
     padding-top: 20px;
     padding-left: 20px;
     padding-right: 20px;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
     margin: 10px;
     background-color:  #ffffff;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
 .share{
     float: right;
     font-size: x-large;
     padding-left: 15px;
 }
-
-.like{
-    float: right;
-    font-size: x-large;
-}
-
 .buttonsproject{
     float: left;
-
 }
 .groupbuttons{
     clear: both;
     padding-top: 20px;
 }
-
-.imageico {
-    width: 100%;
-    height: auto;
-    float: left;
-}
-.contentcase{
-    width: 70%;
-    text-align: left;
-    float: left;
-}
-
 .TitlteFeed{
-    padding: 5px;
+    padding-top: 7px;
 }
-.DescriptionFeed{
+.FeedDescription{
     width: 100%;
+    text-align: left;
 }

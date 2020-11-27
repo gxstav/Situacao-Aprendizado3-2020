@@ -12,8 +12,6 @@ function handleChange(value) {
     console.log(`selected ${value}`);
   }
 
-//tags para colocar: #Alimentação #Vestimentas #Atividades #Outros 
-
 function filtro (){
     function handleChange(value) {
         console.log(`selected ${value}`);
@@ -28,7 +26,9 @@ function filtro (){
                 </div> 
                 <div className="typehelp" >
                     <Checkbox value="">Financeira</Checkbox>
+                    <br />
                     <Checkbox value="">Voluntária</Checkbox>
+                    <br />
                     <Checkbox value="">Divulgação</Checkbox>
                 </div>
             </div>
@@ -38,7 +38,9 @@ function filtro (){
                 </div> 
                 <div className="typehelp">
                     <Checkbox value="">Curtidas</Checkbox>
+                    <br />
                     <Checkbox value="">Novos projetos</Checkbox>
+                    <br />
                     <Checkbox value="">ONG</Checkbox>
                 </div>
             </div>

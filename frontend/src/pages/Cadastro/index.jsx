@@ -38,34 +38,30 @@ function Cadastro(){
 
 return (
     <Layout>
-         <div id="cadastroPage">
-           <Navbar displayAba="0"/>
-           <div className="site-page-header">
-            <PageHeader onBack={gotoHome} title="CADASTRO"/>
-           </div>
-         <Row>
-         <Col span={12} className="cadastroimage"> 
-           <div >
-             <img src={herocadastro} alt="Heroes"/>
-           </div>
-         </Col>
-         <Col span={12} className="form">
-            <div className="formEdit">
-              <div className="TitleRegister">
-              <h2>PREENCHA OS CAMPOS ABAIXO</h2>
-              </div>
-              <Form name="cadastro">
+      <div id="cadastroPage">
+      <Navbar displayAba="0"/>
+        <div className="site-page-header">
+          <PageHeader onBack={gotoHome} title="CADASTRO"/>
+        </div>
+      <Row>
+        <Col span={12} className="cadastroimage"> 
+          <div >
+            <img src={herocadastro} alt="Heroes"/>
+          </div>
+        </Col>
+        <Col span={12} className="form">
+          <div className="formEdit">
+            <div className="TitleRegister">
+                <h2>PREENCHA OS CAMPOS ABAIXO</h2>
+            </div>
+            <Form name="cadastro">
               <Form.Item name="nome">      
-              <Input placeholder='Nome da ONG' value={name} onChange={event => setName(event.target.value)}/>    
-               </Form.Item>
-                  <Form.Item name="email" rules={[{ type: 'email', message: 'Este não é um email válido!',},{ required: true, message: 'Por favor insira seu email!',
-                    },
-                  ]}
-                >
-                  <Input placeholder='Email da ONG ou Responsável' value={email} onChange={event => setEmail(event.target.value)}/>
-                </Form.Item>
-
-                <Form.Item
+                <Input placeholder='Nome da ONG' value={name} onChange={event => setName(event.target.value)}/>    
+              </Form.Item>
+              <Form.Item name="email" rules={[{ type: 'email', message: 'Este não é um email válido!',},{ required: true, message: 'Por favor insira seu email!',},]}>
+                <Input placeholder='Email da ONG ou Responsável' value={email} onChange={event => setEmail(event.target.value)}/>
+              </Form.Item>
+              <Form.Item
                   name="password"        
                   rules={[
                     {
@@ -74,10 +70,9 @@ return (
                     },
                   ]}
                   hasFeedback
-                >
-                  <Input.Password placeholder='Senha' value={password} onChange={event => setPassword(event.target.value)}/>
-                </Form.Item>
-
+              >
+              <Input.Password placeholder='Senha' value={password} onChange={event => setPassword(event.target.value)}/>
+              </Form.Item>
                 <Form.Item name="confirm" dependencies={['password']} hasFeedback rules={[
                     {
                       required: true,

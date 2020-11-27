@@ -1,5 +1,5 @@
 import React, { useState, forwardRef, useImperativeHandle } from 'react'
-import { Drawer, Form, Button, Col, Row, Input, Select, DatePicker, Checkbox, Upload, message } from 'antd';
+import { Drawer, Form, Button, Col, Row, Input, Select, DatePicker, Checkbox, message } from 'antd';
 import './style.css';
 import ReactDOM from 'react-dom'
 
@@ -24,29 +24,26 @@ function getBase64(img, callback) {
     return isJpgOrPng && isLt2M;
   }
   
-  class Avatar extends React.Component {
-    state = {
-      loading: false,
-    };
-    handleChange = info => {
-      if (info.file.status === 'uploading') {
-        this.setState({ loading: true });
-        return;
-      }
-      if (info.file.status === 'done') {
-        // Get this url from response in real world.
-        getBase64(info.file.originFileObj, imageUrl =>
-          this.setState({
-            imageUrl,
-            loading: false,
-          }),
-        );
-      }
-    }
-  }
-
-
-
+//   class Avatar extends React.Component {
+//     state = {
+//       loading: false,
+//     };
+//     handleChange = info => {
+//       if (info.file.status === 'uploading') {
+//         this.setState({ loading: true });
+//         return;
+//       }
+//       if (info.file.status === 'done') {
+//         // Get this url from response in real world.
+//         getBase64(info.file.originFileObj, imageUrl =>
+//           this.setState({
+//             imageUrl,
+//             loading: false,
+//           }),
+//         );
+//       }
+//     }
+//   }
 
   const DrawerHeroes = forwardRef((props,ref) => {
     
@@ -155,8 +152,6 @@ function getBase64(img, callback) {
                             <Checkbox onChange={onChange}>Atividades</Checkbox>
                             <Checkbox onChange={onChange}>Outros</Checkbox>
                         </Form.Item>
-                                       
-
                     </Row>
                     
                 <Row gutter={16}>
