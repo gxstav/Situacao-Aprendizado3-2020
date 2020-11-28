@@ -41,24 +41,20 @@ const DrawerHeroes = forwardRef((props, ref) => {
         console.log({ name, type, address, segment, description, dateRange })
         event.preventDefault()
         try {
-            const data = { name, type, address, segment, description, date_start: dateRange[0], date_end: dateRange[1] }
+            const data = { name, type, address, segment, description, date_start: moment(dateRange[0]).format('YYYY-MM-DD'), date_end: moment(dateRange[1]).format('YYYY-MM-DD') }
             const token = cookie['x-access-token']
-            console.log(token)
-            const response = await api.post('projetos', {
-                headers: { 'x-access-token': token },
-                body: data
+            const response = await api.post('projetos', data, {
+                headers: { 'x-access-token': token }
             })
+            if (response.status === 200) {
+                alert(response.data.message)
+                closeDrawer()
+            }
             alert(response.data.message)
-            gotoProjects()
         } catch (error) {
-            alert('Erro ao cadastrar, tente novamente.')
+            alert('Erro ao criar Projeto, tente novamente.')
         }
     }
-
-    function gotoProjects() {
-        history.push('/projetos')
-    }
-
 
     function checkedSegment(event) {
         const { value, checked } = event.target
