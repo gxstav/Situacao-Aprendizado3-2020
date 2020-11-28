@@ -155,7 +155,8 @@ const DrawerHeroes = forwardRef((props, ref) => {
                                     getPopupContainer={trigger => trigger.parentElement}
                                     format={DATE_FORMAT}
                                     value={[moment(), moment()]}
-                                    disabled={[true, false]}
+                                    defaultValue={[moment()]}
+                                    disabled={[false, false]}
                                     onChange={
                                         (dates) => {
                                             setDateRange(dates)

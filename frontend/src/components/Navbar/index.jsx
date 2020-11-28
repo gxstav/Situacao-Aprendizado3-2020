@@ -7,6 +7,7 @@ import './style.css';
 import iconheroes from '../../assets/images/iconheroes.png';
 import Login from '../../components/Login';
 import api from '../../services/api';
+import moment from 'moment';
 
 const { Header } = Layout;
 
@@ -36,8 +37,8 @@ function Navbar(props) {
             const data = { email, password }
             const response = await api.post('login', data)
             const { access_token, refresh_token } = response.data
-            setCookie('x-access-token', access_token, { path: '/' })
-            setCookie('x-refresh-token', refresh_token, { path: '/' })
+            setCookie('x-access-token', access_token, { path: '/', expires: moment()})
+            setCookie('x-refresh-token', refresh_token, { path: '/', expires: moment()})
             setStatus(true)
             closeModal()
             gotoHome()

@@ -6,6 +6,6 @@ module.exports = {
         const { name, email, password, phone, city, uf, url, about } = request.body
         await connection('ong').insert({ name, email, password: encrypt(password), phone, city, uf, url, about })
             .catch(e => console.log(e))
-        return response.status(200).json({ message: "ONG Created." })
+        return response.status(200).json({ message: "ONG Cadastrada." })
     }
 }

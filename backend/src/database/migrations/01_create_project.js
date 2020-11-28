@@ -4,6 +4,8 @@ module.exports = {
   up: async function(knex) {
     return knex.schema.createTable('project', table => {
       table.increments('id').primary()
+      table.integer('ong_id').unsigned()
+      table.foreign('ong_id').references('id').inTable('ong')
       table.boolean('active').defaultTo(true).notNullable()
       table.string('name').notNullable()
       table.string('type').notNullable()
