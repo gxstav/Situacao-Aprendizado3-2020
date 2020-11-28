@@ -26,7 +26,7 @@
     width: 100%;
     background-color: azure;
     color: black;
-    border-color: rgb(185, 185, 185);
+    border-color: rgb(185, 185, 185);    
 }
 
 #logobanner{
@@ -39,11 +39,15 @@
 }
 
 #fechar{
-    float: right;
-    clear: right;
+    margin-left: 31em;
 }
 #entrar{
     margin-bottom: 10px;
     width: 100%;
 }
 
+#imagem-login{
+    width: 100%;
+    height: 47%;  
+    margin-top: -6px;
+}

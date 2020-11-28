@@ -25,7 +25,7 @@ function About (){
                 <div className="site-card-wrapper">
                     <Row gutter={16}>
                         <Col span={8}>
-                            <Card>
+                            <Card className="stylecard">
                             <Avatar size={120} img src = {rebeckaicon} alt=""  className="contentstyle" />
                             <h3><strong>REBECKA OJEDA</strong></h3>
                             <hr />
@@ -35,7 +35,7 @@ function About (){
                             </Card>
                         </Col>
                         <Col span={8}>
-                            <Card >
+                            <Card className="stylecard">
                             <Avatar size={120} img src = {gustavoicon} alt=""  className="contentstyle"/>
                             <h3><strong>GUSTAVO BARCELOS</strong></h3>
                             <hr />
@@ -45,7 +45,7 @@ function About (){
                             </Card>
                         </Col>
                         <Col span={8}>
-                            <Card >
+                            <Card className="stylecard">
                             <Avatar size={120} img src = {augustoicon} alt=""  className="contentstyle"/>
                             <h3><strong>AUGUSTO CARVALHO</strong></h3>
                             <hr />

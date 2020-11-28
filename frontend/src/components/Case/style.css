@@ -10,13 +10,11 @@
     margin: 20px;
     background-color:  #ffffff;
 }
-.bannercase{
-    height: auto;
-    width: 100%;
-}
+
 .HelpButton{
     margin-right: 15px;   
     float: right;
+    
 }
 .VoluntaryButton{
     margin-right: 15px;   
@@ -27,8 +25,9 @@
     padding-top: 20px;
     padding-bottom: 25px;
     padding-right: 10px;
+    
 }
-.LikeContent{
+.ShareContent{
     float: left;
     clear: left;
     padding-left: 15px;
