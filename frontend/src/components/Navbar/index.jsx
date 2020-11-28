@@ -140,7 +140,7 @@ function Navbar(props) {
                         <Button id="entrar" type="primary" htmlType="submit" onClick={handleLogin} size="medium">
                             Entrar
                         </Button>
-                        <Button id="querocadastrar" type="primary" htmlType="submit" onClick={gotoCadastro} size="medium" >
+                        <Button id="querocadastrar" type="primary" htmlType="button" onClick={gotoCadastro} size="medium" >
                             Não possui conta? Cadastre-se
                         </Button>
                     </Form>
