@@ -16,8 +16,6 @@ function Home(){
     setPagina(page)
   }
 
-  console.log(pagina)
-
   return (
     <div id="homePage">
       <Navbar />          

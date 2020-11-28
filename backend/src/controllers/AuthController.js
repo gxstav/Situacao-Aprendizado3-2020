@@ -3,15 +3,19 @@ const jwt = require('jsonwebtoken')
 const generateAccessToken = require('../utils/generateAccessToken')
 const generateRefreshToken = require('../utils/generateRefreshToken')
 const connection = require('../database/connection')
+const encrypt = require('../utils/encryptPassword')
 
 module.exports = {
     async login(request, response) {
-        const user = { email, password } = request.body
+        const { email, password } = request.body;
+        const user = { email, password: encrypt(password) }; 
         const accessToken = generateAccessToken(user)
         const refreshToken = generateRefreshToken(user)
         try {
-            const ong = await connection('ong').where({ email, password })
-            if (!ong[0]) return response.status(404).json({ message: "Email e/ou senha incorretos." })
+            const ong = await connection('ong').where(user)
+            if (!ong[0]) {
+             return response.status(202).json({ message: "Email e/ou senha incorretos." })
+            }
             await connection('token').insert({ refresh: refreshToken })
         } catch (error) {
             console.log(error)

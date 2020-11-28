@@ -27,8 +27,11 @@ function Cadastro() {
         try {
             const data = { name, email, password, phone, city, uf, url, about }
             const response = await api.post('cadastro', data)
+            if (response.status === 200){
+                alert(response.data.message)
+                gotoHome()
+            }
             alert(response.data.message)
-            gotoHome()
         } catch (error) {
             alert('Erro ao cadastrar, tente novamente.')
         }
@@ -58,7 +61,7 @@ function Cadastro() {
                             </div>
                             <Form name="cadastro">
                                 <Form.Item name="nome">
-                                    <Input placeholder='Nome da ONG' value={name} onChange={event => setName(event.target.value)} />
+                                    <Input placeholder='Nome da ONG' autoComplete='username' value={name} onChange={event => setName(event.target.value)} />
                                 </Form.Item>
                                 <Form.Item name="email" rules={[{ type: 'email', message: 'Este não é um email válido!', }, { required: true, message: 'Por favor insira seu email!', },]}>
                                     <Input placeholder='Email da ONG ou Responsável' value={email} onChange={event => setEmail(event.target.value)} />
@@ -73,7 +76,7 @@ function Cadastro() {
                                     ]}
                                     hasFeedback
                                 >
-                                    <Input.Password placeholder='Senha' value={password} onChange={event => setPassword(event.target.value)} />
+                                    <Input.Password placeholder='Senha' autoComplete='new-password' value={password} onChange={event => setPassword(event.target.value)} />
                                 </Form.Item>
                                 <Form.Item name="confirm" dependencies={['password']} hasFeedback rules={[
                                     {
@@ -81,8 +84,11 @@ function Cadastro() {
                                         message: 'Por favor confirme sua senha!',
                                     },
                                     ({ getFieldValue }) => ({
-                                        validator(value) {
-                                            if (value || getFieldValue('password') === value) {
+                                        validator(rule, value) {
+                                            console.log(rule)
+                                            console.log(value)
+                                            console.log(getFieldValue('password'))
+                                            if (!value || getFieldValue('password') === value) {
                                                 return Promise.resolve();
                                             } else {
                                                 return Promise.reject('As senhas não correpondem!');
@@ -91,7 +97,7 @@ function Cadastro() {
                                     }),
                                 ]}
                                 >
-                                    <Input.Password placeholder='Confirmar Senha' />
+                                    <Input.Password placeholder='Confirmar Senha' autoComplete='new-password'/>
                                 </Form.Item>
 
                                 <Form.Item name="telefone" type="number" rules={[{ required: true }]}>
@@ -103,7 +109,6 @@ function Cadastro() {
                                 </Form.Item>
 
                                 <Form.Item name="estado" rules={[{ required: true }]}>
-                                    {/* <Input placeholder='Estado' value={uf} onChange={event => setUF(event.target.value)} /> */}
                                     <Select placeholder="Estado" value={uf} onChange={uf => setUF(uf)}>
                                         <Option value="AC">Acre</Option>
                                         <Option value="AL">Alagoas</Option>

@@ -5,7 +5,7 @@ module.exports = {
         const { email, password } = response.user
         try {
             const ong = await connection('ong').where({ email, password })
-            if (!ong[0]) return response.sendStatus(401).json({ message: "Sem autorização." })
+            if (!ong[0]) return response.status(401).json({ message: "Sem autorização." })
             const { id } = ong[0]
             const { name, type, address, segment, description, date_start, date_end } = request.body
             await connection('project').insert({ ong_id: id, name, type, address, segment, description, date_start, date_end })

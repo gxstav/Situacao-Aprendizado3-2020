@@ -37,13 +37,20 @@ function Navbar(props) {
         try {
             const data = { email, password }
             const response = await api.post('login', data)
-            const { access_token, refresh_token } = response.data
-            setCookie('x-access-token', access_token, { path: '/', expires: moment()})
-            setCookie('x-refresh-token', refresh_token, { path: '/', expires: moment()})
-            setStatus(true)
-            closeModal()
-            gotoHome()
+            console.log(response)
+            if (response.status === 200) {
+                const { access_token, refresh_token } = response.data
+                const IN_30_MINUTES = new Date(moment().add(30, 'minutes').toDate());
+                setCookie('x-access-token', access_token, { path: '/', expires: IN_30_MINUTES})
+                setCookie('x-refresh-token', refresh_token, { path: '/', expires: IN_30_MINUTES})
+                setStatus(true)
+                closeModal()
+                gotoHome()
+            } else {
+                alert(response.data.message)
+            }
         } catch (error) {
+            console.log(error)
             alert('Erro ao logar, tente novamente.')
         }
     }
