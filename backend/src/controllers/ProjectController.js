@@ -30,6 +30,15 @@ module.exports = {
         }
     },
 
+    async details(request, response) {
+        const { id } = request.params
+        const data = await connection('project')
+            .select('project.name as nome', 'project.address as endereco', 'project.segment as segmentos', 'project.type as tipo', 'project.description as descricao', 'ong.name as ong', 'ong.url as site', 'ong.email as email', 'ong.phone as celular', 'ong.city as cidade', 'ong.uf as uf')
+            .where('project.id', id)
+            .leftJoin('ong', 'project.ong_id', 'ong.id')
+        return response.status(200).json(data[0])
+    },
+
     async delete(request, response) {
         const id = request.headers['x-project-id']
         await connection('project').where('id', id).del()

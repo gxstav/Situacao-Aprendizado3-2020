@@ -41,7 +41,7 @@ routes.post('/cadastro', celebrate({
   })
 }), ong.create)
 
-// INCIDENT ROUTES
+// PROJECT ROUTES
 routes.post('/projetos', auth.authenticate, celebrate({
   [Segments.BODY]: Joi.object().keys({
     name: Joi.string().required(),
@@ -53,8 +53,6 @@ routes.post('/projetos', auth.authenticate, celebrate({
     description: Joi.string().required()
   })
 }), project.create)
-
-// routes.get('/casos', incident.index)
 
 routes.get('/projetos', auth.authenticate, celebrate({
   [Segments.HEADERS]: Joi.object().keys({
@@ -69,6 +67,12 @@ routes.delete('/projetos', auth.authenticate, celebrate({
     'x-project-id': Joi.number().required()
   }).options({ allowUnknown: true })
 }), project.delete)
+
+routes.get('/projetos/:id', celebrate({
+  [Segments.PARAMS]: {
+    id: Joi.number().required()
+  }
+}), project.details)
 
 
 module.exports = routes

@@ -14,10 +14,10 @@ function Routes() {
   return (
     <BrowserRouter>
       <Route path="/" exact component={Home} />
-      <Route path="/caso/:id"  component={Caso} />
+      <Route path="/projetos/:id"  component={Caso} />
       <Route path="/cadastro"  component={Cadastro} />
       <Route path="/sobre"  component={Sobre} />
-      <Route path="/projetos"  component={Projetos} />
+      <Route path="/projetos" exact component={Projetos} />
     </BrowserRouter>
   )
 }

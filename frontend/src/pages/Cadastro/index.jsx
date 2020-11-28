@@ -101,7 +101,7 @@ function Cadastro() {
                                 </Form.Item>
 
                                 <Form.Item name="telefone" type="number" rules={[{ required: true }]}>
-                                    <Input placeholder='Telefone' value={phone} onChange={event => setPhone(event.target.value)} />
+                                    <Input placeholder='Telefone' maxLength='11' value={phone} onChange={event => setPhone(event.target.value)} />
                                 </Form.Item>
 
                                 <Form.Item name="cidade" rules={[{ required: true }]}>

@@ -39,9 +39,9 @@ function Navbar(props) {
             const response = await api.post('/login', data)
             if (response.status === 200) {
                 const { access_token, refresh_token } = response.data
-                const IN_30_MINUTES = new Date(moment().add(30, 'minutes').toDate());
-                setCookie('x-access-token', access_token, { path: '/', expires: IN_30_MINUTES})
-                setCookie('x-refresh-token', refresh_token, { path: '/', expires: IN_30_MINUTES})
+                const IN_12_HOURS = new Date(moment().add(12, 'hours').toDate());
+                setCookie('x-access-token', access_token, { path: '/', expires: IN_12_HOURS})
+                setCookie('x-refresh-token', refresh_token, { path: '/', expires: IN_12_HOURS})
                 setStatus(true)
                 closeModal()
                 gotoHome()

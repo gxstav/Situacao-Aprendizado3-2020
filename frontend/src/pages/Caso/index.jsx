@@ -42,7 +42,7 @@ function Caso (props){
             <Content>
                 <Row>
                     <Col span={17}>
-                        {render(incident)}
+                        { render(incident) }
                     </Col>
                     <Col span={7}>
                         <div className="siderContent">

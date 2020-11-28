@@ -1,27 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
+import { useHistory } from 'react-router-dom';
 import './style.css';
 import { Collapse, List, Button  } from 'antd';
 import { CloseOutlined, SearchOutlined } from '@ant-design/icons';
 import api from '../../services/api';
 
 const { Panel } = Collapse;
-const useForceUpdate = () => useState()[1]
+
 function OptionsCollapse() {
 
     const [cookie, setCookie] = useCookies(['x-access-token', 'x-refresh-token'])
     const token = cookie['x-access-token']
-    const forceUpdate = useForceUpdate()
     const [ativos, setAtivos] = useState([])
     const [concluidos, setConcluidos] = useState([])
-    // const [gathered, setGathered] = useState(false)
+    const history = useHistory()
 
     useEffect(() => {
         async function projetosAtivos() {
             const response = await api.get('/projetos', {
                 headers: { 'x-access-token': token, 'x-andamento': true }
             }, { active: true })
-            console.log('ativos', response.data)
+
             if (response.status === 200) {
                 const { data } = response
                 setAtivos(data)
@@ -32,7 +32,7 @@ function OptionsCollapse() {
             const response = await api.get('/projetos', {
                 headers: { 'x-access-token': token, 'x-andamento': false }
             })
-            console.log('Concluídos', response)
+
             if (response.status === 200) {
                 const { data } = response
                 setConcluidos(data)
@@ -44,7 +44,7 @@ function OptionsCollapse() {
     }, [token]);
 
     function gotoDetails (id) {
-        console.log(id)
+        history.push(`/projetos/${id}`)
     }
 
     async function deleteProject (id) {
@@ -53,7 +53,6 @@ function OptionsCollapse() {
                 headers: { 'x-access-token': token, 'x-project-id': id }
             })
             alert(response.data.message)
-            forceUpdate()
         } catch (error) {
             alert('Erro ao cadastrar, tente novamente.')
         }
@@ -70,8 +69,7 @@ function OptionsCollapse() {
             </List>
         )
     }
-    // console.log('Ativos', ativos)
-    // console.log('Concluidos', concluidos)
+
     return(
         <div id="ProjectPage">
             <Collapse defaultActiveKey={['1']}>
