@@ -1,39 +1,89 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useCookies } from 'react-cookie';
 import './style.css';
 import { Collapse, List, Button  } from 'antd';
 import { CloseOutlined, SearchOutlined } from '@ant-design/icons';
-import ProjetosAndamento from '../ProjetosAndamento';
-const { Panel } = Collapse;
+import api from '../../services/api';
 
-function optionsCollapse (){
-    function callback(key) {
-        console.log(key);
-      }
+const { Panel } = Collapse;
+const useForceUpdate = () => useState()[1]
+function OptionsCollapse() {
+
+    const [cookie, setCookie] = useCookies(['x-access-token', 'x-refresh-token'])
+    const token = cookie['x-access-token']
+    const forceUpdate = useForceUpdate()
+    const [ativos, setAtivos] = useState([])
+    const [concluidos, setConcluidos] = useState([])
+    // const [gathered, setGathered] = useState(false)
+
+    useEffect(() => {
+        async function projetosAtivos() {
+            const response = await api.get('/projetos', {
+                headers: { 'x-access-token': token, 'x-andamento': true }
+            }, { active: true })
+            console.log('ativos', response.data)
+            if (response.status === 200) {
+                const { data } = response
+                setAtivos(data)
+            }
+        }
+
+        async function projetosFinalizados() {
+            const response = await api.get('/projetos', {
+                headers: { 'x-access-token': token, 'x-andamento': false }
+            })
+            console.log('Concluídos', response)
+            if (response.status === 200) {
+                const { data } = response
+                setConcluidos(data)
+            }
+        }
+        
+        projetosAtivos()
+        projetosFinalizados()
+    }, [token]);
+
+    function gotoDetails (id) {
+        console.log(id)
+    }
+
+    async function deleteProject (id) {
+        try {
+            const response = await api.delete('/projetos', {
+                headers: { 'x-access-token': token, 'x-project-id': id }
+            })
+            alert(response.data.message)
+            forceUpdate()
+        } catch (error) {
+            alert('Erro ao cadastrar, tente novamente.')
+        }
+    }
+
+    function criarList (projeto) {
+        return (
+            <List itemLayout="horizontal" key={projeto.id} className="ListContent">
+                <h3 className="TitlePreview">{projeto.name}</h3>
+                <div className="ProjectButtonsGroup">
+                    <Button type="primary" className="ProjectButtons" onClick={() => gotoDetails(projeto.id)}><SearchOutlined />Detalhes</Button>
+                    <Button type="danger" className="ProjectButtons" onClick={() => deleteProject(projeto.id)}><CloseOutlined />Excluir</Button>
+                </div>    
+            </List>
+        )
+    }
+    // console.log('Ativos', ativos)
+    // console.log('Concluidos', concluidos)
     return(
         <div id="ProjectPage">
-            <Collapse defaultActiveKey={['1']} onChange={callback}>
+            <Collapse defaultActiveKey={['1']}>
                 <Panel header="Projetos em andamento" key="1">
-                    <ProjetosAndamento />
+                { ativos.map(projeto => criarList(projeto)) }
                 </Panel>
                 <Panel header="Projetos finalizados" key="2">
-                <List itemLayout="horizontal"  className="ListContent">
-                       <h3 className="TitlePreview">NOME DO PROJETO</h3>
-                        <div className="ProjectButtonsGroup">
-                            <Button type="primary" className="ProjectButtons"><SearchOutlined />Detalhes</Button>
-                            <Button type="danger" className="ProjectButtons"><CloseOutlined />Excluir</Button>
-                            
-                        </div>    
-                    </List>
-                    <List itemLayout="horizontal" className="ListContent">
-                        <h3 className="TitlePreview">NOME DO PROJETO</h3>
-                        <div className="ProjectButtonsGroup">
-                        <Button type="primary" className="ProjectButtons"><SearchOutlined />Detalhes</Button>
-                            <Button type="danger" className="ProjectButtons"><CloseOutlined /> Excluir</Button> 
-                        </div> 
-                     </List>
+                { concluidos.map(projeto => criarList(projeto)) }
                 </Panel>
             </Collapse>
         </div>
     )
 }
-export default optionsCollapse;
+
+export default OptionsCollapse;

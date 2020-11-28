@@ -53,10 +53,22 @@ routes.post('/projetos', auth.authenticate, celebrate({
     description: Joi.string().required()
   })
 }), project.create)
+
 // routes.get('/casos', incident.index)
-// routes.get('/projetos', auth.authenticate, incident.index)
-// routes.get('/projetos/:id', incident.get)
-// routes.delete('/projeto/:id', incident.delete)
+
+routes.get('/projetos', auth.authenticate, celebrate({
+  [Segments.HEADERS]: Joi.object().keys({
+    'x-access-token': Joi.string().required(),
+    'x-andamento': Joi.boolean().required()
+  }).options({ allowUnknown: true })
+}), project.get)
+
+routes.delete('/projetos', auth.authenticate, celebrate({
+  [Segments.HEADERS]: Joi.object().keys({
+    'x-access-token': Joi.string().required(),
+    'x-project-id': Joi.number().required()
+  }).options({ allowUnknown: true })
+}), project.delete)
 
 
 module.exports = routes

@@ -36,7 +36,7 @@ function Navbar(props) {
         event.preventDefault()
         try {
             const data = { email, password }
-            const response = await api.post('login', data)
+            const response = await api.post('/login', data)
             if (response.status === 200) {
                 const { access_token, refresh_token } = response.data
                 const IN_30_MINUTES = new Date(moment().add(30, 'minutes').toDate());

@@ -1,7 +1,6 @@
 import React, { useState, forwardRef, useImperativeHandle} from 'react';
 import ReactDOM from 'react-dom';
 import './style.css';
-import { useHistory } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import { Drawer, Form, Button, Col, Row, Input, Select, DatePicker, Checkbox } from 'antd';
 import locale from 'antd/es/date-picker/locale/pt_BR';
@@ -13,7 +12,6 @@ const DATE_FORMAT = 'DD/MM/YYYY';
 
 const DrawerHeroes = forwardRef((props, ref) => {
     const [drawer, setDrawer] = useState(false)
-    const history = useHistory()
     const [name, setName] = useState('')
     const [type, setType] = useState()
     const [address, setAddress] = useState('')
@@ -43,7 +41,7 @@ const DrawerHeroes = forwardRef((props, ref) => {
         try {
             const data = { name, type, address, segment, description, date_start: moment(dateRange[0]).format('YYYY-MM-DD'), date_end: moment(dateRange[1]).format('YYYY-MM-DD') }
             const token = cookie['x-access-token']
-            const response = await api.post('projetos', data, {
+            const response = await api.post('/projetos', data, {
                 headers: { 'x-access-token': token }
             })
             if (response.status === 200) {

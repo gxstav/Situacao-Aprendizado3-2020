@@ -52,10 +52,11 @@ module.exports = {
     authenticate(request, response, next) {
         const token = request.headers['x-access-token']
         if (!token) return response.sendStatus(401)
-        
-        
+      
         jwt.verify(token, process.env.SECRET_TOKEN_ACCESS, (error, user) => {
-            if (error) return response.sendStatus(403)
+            if (error) {
+                return response.sendStatus(403)
+            }
             response.user = user
             next()
         })

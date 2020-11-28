@@ -26,7 +26,7 @@ function Cadastro() {
         event.preventDefault()
         try {
             const data = { name, email, password, phone, city, uf, url, about }
-            const response = await api.post('cadastro', data)
+            const response = await api.post('/cadastro', data)
             if (response.status === 200){
                 alert(response.data.message)
                 gotoHome()
