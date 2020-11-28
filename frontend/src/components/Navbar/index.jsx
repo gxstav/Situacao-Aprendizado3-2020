@@ -37,7 +37,6 @@ function Navbar(props) {
         try {
             const data = { email, password }
             const response = await api.post('login', data)
-            console.log(response)
             if (response.status === 200) {
                 const { access_token, refresh_token } = response.data
                 const IN_30_MINUTES = new Date(moment().add(30, 'minutes').toDate());
@@ -50,7 +49,6 @@ function Navbar(props) {
                 alert(response.data.message)
             }
         } catch (error) {
-            console.log(error)
             alert('Erro ao logar, tente novamente.')
         }
     }
