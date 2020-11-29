@@ -13,7 +13,7 @@ function About (){
     return(
     <div id="Aboutpage">
         <Layout>
-            <Navbar displayAba="2"/>
+            <Navbar displayAba="3"/>
             <Content>
             <div className ="containerBase">
                 <h1>SOBRE A HEROES</h1>

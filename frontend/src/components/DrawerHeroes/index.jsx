@@ -36,7 +36,6 @@ const DrawerHeroes = forwardRef((props, ref) => {
     }
 
     async function handleProject(event) {
-        console.log({ name, type, address, segment, description, dateRange })
         event.preventDefault()
         try {
             const data = { name, type, address, segment, description, date_start: moment(dateRange[0]).format('YYYY-MM-DD'), date_end: moment(dateRange[1]).format('YYYY-MM-DD') }
@@ -61,7 +60,6 @@ const DrawerHeroes = forwardRef((props, ref) => {
         } else {
             removeSegment(value)
         }
-        console.log(segment)
     }
 
     function addSegment(singleSegment) {

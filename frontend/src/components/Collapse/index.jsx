@@ -18,7 +18,7 @@ function OptionsCollapse() {
 
     useEffect(() => {
         async function projetosAtivos() {
-            const response = await api.get('/projetos', {
+            const response = await api.get('/ong/projetos', {
                 headers: { 'x-access-token': token, 'x-andamento': true }
             }, { active: true })
 
@@ -29,7 +29,7 @@ function OptionsCollapse() {
         }
 
         async function projetosFinalizados() {
-            const response = await api.get('/projetos', {
+            const response = await api.get('/ong/projetos', {
                 headers: { 'x-access-token': token, 'x-andamento': false }
             })
 

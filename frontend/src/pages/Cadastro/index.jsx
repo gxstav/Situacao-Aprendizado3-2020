@@ -85,9 +85,6 @@ function Cadastro() {
                                     },
                                     ({ getFieldValue }) => ({
                                         validator(rule, value) {
-                                            console.log(rule)
-                                            console.log(value)
-                                            console.log(getFieldValue('password'))
                                             if (!value || getFieldValue('password') === value) {
                                                 return Promise.resolve();
                                             } else {

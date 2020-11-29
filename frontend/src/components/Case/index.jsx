@@ -6,25 +6,30 @@ import api from '../../services/api';
 import Voluntario from '../../components/Voluntario';
 import Doar from '../../components/Doar';
 import pagamentos from '../../assets/images/pagamentos.png';
-import { useHistory } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 
 const { TabPane } = Tabs;
 
 function Case(props) {
 
     const { id } = props
-
+    const [cookie, setCookie, removeCookie] = useCookies(['x-access-token', 'x-refresh-token'])
+    const [status, setStatus] = useState(isLogged())
+    const [projeto, setProjeto] = useState({})
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
-    const [projeto, setProjeto] = useState({})
 
+    function isLogged() {
+        const access = cookie['x-access-token']
+        const refresh = cookie['x-refresh-token']
+        return access && refresh ? true : false
+    }
 
     useEffect(() => {
         async function getDetails() {
             const respose = await api.get(`/projetos/${id}`)
             if (respose.status === 200) {
                 const { data } = respose
-                console.log(data)
                 setProjeto(data)
             }
         }
@@ -91,34 +96,37 @@ function Case(props) {
                     </Descriptions>
                 </TabPane>
             </Tabs>
-            <div className="LikeButtonsGroup">
-                <Statistic title="Compartilhe!" className="ShareContent" value={1128} prefix={<ShareAltOutlined />} />
-                <div className="buttons">
-                    <Button type="primary" className="HelpButton" onClick={doarModal}>Quero doar</Button>
-                    <Button type="primary" className="VoluntaryButton" onClick={openModal}>Quero me voluntariar</Button>
-                    <Voluntario ref={modalRef}>
-                        <h2>Entre em Contato</h2>
-                        <br />
-                        <Form name="logar" >Email:
-                        <Form.Item name="email" rules={[{ type: 'email', message: 'Este não é um email válido!' },
-                            { required: true, message: 'Por favor insira seu email!' }]}>
-                                <Input placeholder='exemplo@email.com' value={email} onChange={event => setEmail(event.target.value)} />
-                            </Form.Item>
-                            <Form.Item name="telefone" type="number">Telefone:
-                            <Input placeholder='48123456789' maxLength='11' value={phone} onChange={event => setPhone(event.target.value)} />
-                            </Form.Item>
-                            <Form.Item name="mensagem">Escreva uma mensagem:
-                             <Input.TextArea />
-                            </Form.Item>
-                            <Button id="entrar" type="primary" htmlType="submit" onClick={handleVoluntario} size="medium">Enviar</Button>
-                        </Form>
-                    </Voluntario>
-                    <Doar ref={doarRef}>
-                        <h2>Em breve você poderá escolher uma das opções abaixo para efetuar a sua doação</h2>
-                        <img src={pagamentos} alt="pagamentos" width="100%"></img>
-                    </Doar>
+            {
+                status ? '' 
+                : <div className="LikeButtonsGroup">
+                    <Statistic title="Compartilhe!" className="ShareContent" value={1128} prefix={<ShareAltOutlined />} />
+                    <div className="buttons">
+                        <Button type="primary" className="HelpButton" onClick={doarModal}>Quero doar</Button>
+                        <Button type="primary" className="VoluntaryButton" onClick={openModal}>Quero me voluntariar</Button>
+                        <Voluntario ref={modalRef}>
+                            <h2>Entre em Contato</h2>
+                            <br />
+                            <Form name="logar" >Email:
+                                <Form.Item name="email" rules={[{ type: 'email', message: 'Este não é um email válido!' },
+                                    { required: true, message: 'Por favor insira seu email!' }]}>
+                                    <Input placeholder='exemplo@email.com' value={email} onChange={event => setEmail(event.target.value)} />
+                                </Form.Item>
+                                <Form.Item name="telefone" type="number">Telefone:
+                                    <Input placeholder='48123456789' maxLength='11' value={phone} onChange={event => setPhone(event.target.value)} />
+                                </Form.Item>
+                                <Form.Item name="mensagem">Escreva uma mensagem:
+                                    <Input.TextArea />
+                                </Form.Item>
+                                <Button id="entrar" type="primary" htmlType="submit" onClick={handleVoluntario} size="medium">Enviar</Button>
+                            </Form>
+                        </Voluntario>
+                        <Doar ref={doarRef}>
+                            <h2>Em breve você poderá escolher uma das opções abaixo para efetuar a sua doação</h2>
+                            <img src={pagamentos} alt="pagamentos" width="100%"></img>
+                        </Doar>
+                    </div>
                 </div>
-            </div>
+            }
         </div>
     )
 }

@@ -19,7 +19,7 @@ function Projetos() {
     return (
         <div id="ProjectPage">
             <Layout>
-                <Navbar displayAba="3" />
+                <Navbar displayAba="2" />
                 <DrawerHeroes ref={drawerRef} />
                 <div className="backgroundContainer">
                     <div className="newProjectButton">

@@ -7,12 +7,7 @@ const { Sider } = Layout;
 const { Search } = Input;
 const { Option } = Select;
 
-
-// function handleChange(value) {
-//     console.log(`selected ${value}`);
-//   }
-
-function filtro (){
+function Filtro () {
     function handleChange(value) {
         console.log(`selected ${value}`);
     }
@@ -101,4 +96,4 @@ function filtro (){
         </Layout>
     )
 }
-export default filtro;
+export default Filtro;

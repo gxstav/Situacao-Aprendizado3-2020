@@ -6,6 +6,7 @@ import Footer from '../../components/Footer'
 import RelatedSider from '../../components/RelatedSider'
 import Case from '../../components/Case'
 import { Row, Col, Layout, PageHeader } from 'antd';
+import { useCookies } from 'react-cookie';
 
 
 const { Content } = Layout;
@@ -13,6 +14,18 @@ const { Content } = Layout;
 function Caso (props){
 
     const history = useHistory()
+    const [cookie, setCookie, removeCookie] = useCookies(['x-access-token', 'x-refresh-token'])
+    const [status, setStatus] = useState(isLogged())
+
+    function isLogged() {
+        const access = cookie['x-access-token']
+        const refresh = cookie['x-refresh-token']
+        return access && refresh ? true : false
+    }
+
+    function gotoProjects() {
+        history.push('/projetos')
+    }
 
     function gotoHome() {
         history.push('/')
@@ -35,9 +48,9 @@ function Caso (props){
     return(
     <div id="CasePage">
         <Layout>
-        <Navbar />
+        { status ? <Navbar displayAba="2"/> : <Navbar displayAba="1"/> }
         <div className="pageheader">
-            <PageHeader className="site-page-header" onBack={gotoHome} title="PROJETO"/>
+            <PageHeader className="site-page-header" onBack={status ? gotoProjects : gotoHome} title="PROJETOS"/>
         </div>
             <Content>
                 <Row>

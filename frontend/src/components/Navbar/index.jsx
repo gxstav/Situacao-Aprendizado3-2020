@@ -60,8 +60,8 @@ function Navbar(props) {
             await api.delete('logout', {
                 headers: { 'x-refresh-token': token }
             })
-            removeCookie('x-access-token')
-            removeCookie('x-refresh-token')
+            await removeCookie('x-access-token')
+            await removeCookie('x-refresh-token')
             setStatus(false)
             closeModal()
             gotoHome()
@@ -102,8 +102,8 @@ function Navbar(props) {
             <Header>
                 <Menu theme="dark" mode="horizontal" defaultSelectedKeys={[index]}>
                     <Menu.Item key="1" onClick={gotoHome}>Início</Menu.Item>
-                    <Menu.Item key="2" onClick={gotoAbout}>Conheça os Heroes</Menu.Item>
-                    { status && <Menu.Item key="3" onClick={gotoProjects}>Meus projetos</Menu.Item>}
+                    { status && <Menu.Item key="2" onClick={gotoProjects}>Meus projetos</Menu.Item>}
+                    <Menu.Item key="3" onClick={gotoAbout}>Conheça os Heroes</Menu.Item>
                     <div className="signUp">
                         <img src={iconheroes} alt="Heroes" />
                         { status ? '' : <Button id="botao" type="primary" onClick={gotoCadastro}>Cadastre-se</Button>}

@@ -45,16 +45,16 @@ routes.post('/cadastro', celebrate({
 routes.post('/projetos', auth.authenticate, celebrate({
   [Segments.BODY]: Joi.object().keys({
     name: Joi.string().required(),
-    type: Joi.number().integer().required(),
+    type: Joi.number().integer().required().valid(0, 1, 2),
     address: Joi.string().required(),
     date_start: Joi.string().required(),
     date_end: Joi.string().required(),
-    segment: Joi.array().required().items(Joi.string().min(1)),
+    segment: Joi.array().required().items(Joi.string().valid('ALIMENTACAO', 'ATIVIDADES', 'OUTROS', 'VESTIMENTAS').allow('')),
     description: Joi.string().required()
   })
 }), project.create)
 
-routes.get('/projetos', auth.authenticate, celebrate({
+routes.get('/ong/projetos', auth.authenticate, celebrate({
   [Segments.HEADERS]: Joi.object().keys({
     'x-access-token': Joi.string().required(),
     'x-andamento': Joi.boolean().required()
@@ -73,6 +73,13 @@ routes.get('/projetos/:id', celebrate({
     id: Joi.number().required()
   }
 }), project.details)
+
+routes.get('/projetos', celebrate({
+  [Segments.QUERY]: {
+    page: Joi.number(),
+    size: Joi.number()
+  }
+}), project.index)
 
 
 module.exports = routes

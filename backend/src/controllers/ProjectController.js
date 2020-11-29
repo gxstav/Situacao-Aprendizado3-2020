@@ -2,7 +2,7 @@ const connection = require('../database/connection')
 const encrypt = require('../utils/encryptPassword')
 
 module.exports = {
-    async create(request, response) {
+    async create (request, response) {
         const { email, password } = response.user
         try {
             const ong = await connection('ong').where({ email, password })
@@ -16,7 +16,18 @@ module.exports = {
         }
     },
 
-    async get(request, response) {
+    async index (request, response) {
+        const { page = 1, size = 10 } = request.query
+        const [count] = await connection('project').count('id as total').where('active', true) 
+        const projetos = await connection('project')
+            .select('id','name as nome', 'segment as segmentos', 'type as tipo', 'description as descricao')
+            .limit(size)
+            .offset((page - 1) * size)
+            .where('active', true)
+        return response.status(200).json({lista: projetos, total: count['total']})
+    },
+
+    async get (request, response) {
         const { email, password } = response.user
         const projetosEmAndamento = request.headers['x-andamento']
         const ong = await connection('ong').where({ email, password })
@@ -30,7 +41,7 @@ module.exports = {
         }
     },
 
-    async details(request, response) {
+    async details (request, response) {
         const { id } = request.params
         const data = await connection('project')
             .select('project.name as nome', 'project.address as endereco', 'project.segment as segmentos', 'project.type as tipo', 'project.description as descricao', 'ong.name as ong', 'ong.url as site', 'ong.email as email', 'ong.phone as celular', 'ong.city as cidade', 'ong.uf as uf')
@@ -39,7 +50,7 @@ module.exports = {
         return response.status(200).json(data[0])
     },
 
-    async delete(request, response) {
+    async delete (request, response) {
         const id = request.headers['x-project-id']
         await connection('project').where('id', id).del()
         return response.status(200).json({ message: "Projeto excluído." })
