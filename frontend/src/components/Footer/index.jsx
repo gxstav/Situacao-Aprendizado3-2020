@@ -35,9 +35,9 @@ function footer() {
                         <br></br>
                         <a href="/locais"> Locais </a>
                         <br></br>
-                        <a href="/projetos"> Projetos </a>
+                        <a href="/"> Projetos </a>
                         <br></br>
-                        <a href="/voluntario">Ser um Voluntário</a>
+                        <a href="/voluntario">Seja um Voluntário</a>
                 </Col>
                 <Col className="gutter-row" span={6}>
                     <div>

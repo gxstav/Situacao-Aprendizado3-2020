@@ -14,8 +14,8 @@ const { Content } = Layout;
 function Caso (props){
 
     const history = useHistory()
-    const [cookie, setCookie, removeCookie] = useCookies(['x-access-token', 'x-refresh-token'])
-    const [status, setStatus] = useState(isLogged())
+    const [cookie] = useCookies(['x-access-token', 'x-refresh-token'])
+    const [status] = useState(isLogged())
 
     function isLogged() {
         const access = cookie['x-access-token']

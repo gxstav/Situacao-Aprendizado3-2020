@@ -18,7 +18,7 @@ const DrawerHeroes = forwardRef((props, ref) => {
     const [dateRange, setDateRange] = useState([])
     const [segment, setSegment] = useState([])
     const [description, setDescription] = useState('')
-    const [cookie, setCookie] = useCookies(['x-access-token', 'x-refresh-token']) 
+    const [cookie] = useCookies(['x-access-token', 'x-refresh-token']) 
 
     useImperativeHandle(ref, () => {
         return {

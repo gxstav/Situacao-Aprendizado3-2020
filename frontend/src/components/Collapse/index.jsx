@@ -10,7 +10,7 @@ const { Panel } = Collapse;
 
 function OptionsCollapse() {
 
-    const [cookie, setCookie] = useCookies(['x-access-token', 'x-refresh-token'])
+    const [cookie] = useCookies(['x-access-token', 'x-refresh-token'])
     const token = cookie['x-access-token']
     const [ativos, setAtivos] = useState([])
     const [concluidos, setConcluidos] = useState([])

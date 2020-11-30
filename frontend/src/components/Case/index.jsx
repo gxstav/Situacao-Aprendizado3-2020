@@ -13,8 +13,8 @@ const { TabPane } = Tabs;
 function Case(props) {
 
     const { id } = props
-    const [cookie, setCookie, removeCookie] = useCookies(['x-access-token', 'x-refresh-token'])
-    const [status, setStatus] = useState(isLogged())
+    const [cookie] = useCookies(['x-access-token', 'x-refresh-token'])
+    const [status] = useState(isLogged())
     const [projeto, setProjeto] = useState({})
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
@@ -42,9 +42,9 @@ function Case(props) {
         modalRef.current.openModal()
     }
 
-    const closeModal = () => {
-        modalRef.current.close()
-    }
+    // const closeModal = () => {
+    //     modalRef.current.close()
+    // }
 
     function handleVoluntario() {
         alert("Enviado")
@@ -56,16 +56,16 @@ function Case(props) {
         doarRef.current.doarModal()
     }
 
-    const doarClose = () => {
-        doarRef.current.doarClose()
-    }
+    // const doarClose = () => {
+    //     doarRef.current.doarClose()
+    // }
 
     function criarSegmentos () {
-        return String(projeto.segmentos).split(',').map(seg => <Tag>{ seg.charAt(0) + seg.slice(1).toLowerCase() }</Tag>)
+        return String(projeto.segmentos).split(',').map((seg, index) => <Tag key={index}>{ seg.charAt(0) + seg.slice(1).toLowerCase() }</Tag>)
     }
 
     function definirTipo () {
-        return projeto.tipo === "0" ? <Tag>Voluntária</Tag> : projeto.tipo === "1" ? <Tag>Financeira</Tag> : <Tag>Divulgação</Tag>
+        return projeto.tipo === "0" ? <Tag key={0}>Voluntária</Tag> : projeto.tipo === "1" ? <Tag key={1}>Financeira</Tag> : <Tag key={2}>Divulgação</Tag>
     }
 
     return (
