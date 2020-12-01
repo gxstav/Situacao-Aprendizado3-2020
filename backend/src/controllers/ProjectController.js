@@ -17,8 +17,36 @@ module.exports = {
     },
 
     async index (request, response) {
+        const { name = '', uf = '', types = [], segments = [] } = request.body
         const { page = 1, size = 10 } = request.query
-        const [count] = await connection('project').count('id as total').where('active', true) 
+        
+        if (name || uf || types[0] || segments[0]) {
+            const segment = segments.join(',')
+            const [count] = await connection('project')
+                .count('project.id as total')
+                .leftJoin('ong', 'project.ong_id', 'ong.id')
+                .where((builder) => {
+                    builder.where('project.active', true)
+                    if (name) { builder.where('project.name', 'like', `%${name}%`) }
+                    if (uf) { builder.where('ong.uf', uf) }
+                    if (types[0]) { builder.whereIn('project.type', types) }
+                    if (segments[0]) { builder.where('project.segment', 'like', `%${segment}%`)}
+                })
+            const projetos = await connection('project')
+            .select('project.id as id','project.name as nome', 'project.segment as segmentos', 'project.type as tipo', 'project.description as descricao')
+            .leftJoin('ong', 'project.ong_id', 'ong.id')
+            .limit(size)
+            .offset((page - 1) * size)
+            .where((builder) => {
+                builder.where('project.active', true)
+                if (name) { builder.where('project.name', 'like', `%${name}%`) }
+                if (uf) { builder.where('ong.uf', uf) }
+                if (types[0]) { builder.whereIn('project.type', types) }
+                if (segments[0]) { builder.where('project.segment', 'like', `%${segment}%`)}
+            })
+            return response.status(200).json({lista: projetos, total: count['total']})
+        }
+        const [count] = await connection('project').count('id as total').where('active', true)
         const projetos = await connection('project')
             .select('id','name as nome', 'segment as segmentos', 'type as tipo', 'description as descricao')
             .limit(size)

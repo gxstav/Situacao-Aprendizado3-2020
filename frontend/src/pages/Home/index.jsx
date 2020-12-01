@@ -21,19 +21,26 @@ function Home() {
 
     function Filter() {
 
+        const [nome, setNome] = useState('')
         const [tipo, setTipo] = useState([])
+        const [segmento, setSegmento] = useState([])
+        const [estado, setEstado] = useState('')
 
-        async function getProjectBy() {
-            const response = await api.get(`/projetos?page=${pagina}&size=${tamanho}`)
+        async function getProject() {
+            const data = { name: nome, uf: estado, types: tipo, segments: segmento }
+            console.log(data)
+            const response = await api.put(`/projetos?page=1&size=${tamanho}`, data)
             if (response.status === 200) {
+                console.log(response.data)
                 const { lista, total } = response.data
                 setProjetos(lista)
                 setTotal(total)
             }
         }
 
-        function handleChange() {
-
+        function handleSegmento(segmentos) {
+            let updatedSegmentos = [...segmentos].sort((current, next) => current.localeCompare(next))
+            setSegmento(updatedSegmentos)
         }
 
         function addTipo(singleTipo) {
@@ -45,40 +52,44 @@ function Home() {
             setTipo(uptadedTipo)
         }
 
+        function addEstado(uf) {
+            setEstado(uf)
+        }
+
         return (
             <Layout id="filter">
                 <Sider width={410} className="site-layout-background">
                     <div className="titletype">
                         <h3><strong>POR PROJETO</strong></h3>
-                        <Input placeholder="Nome do projeto" onChange={event => console.log(event.target.value)} />
+                        <Input placeholder="Nome do projeto" onChange={event => setNome(event.target.value)} />
                     </div>
                     <div className="titletype">
                         <h3><strong>POR SEGMENTO</strong></h3>
                     </div>
                     <div className="typehelp">
-                        <Select mode="multiple" style={{ width: '100%' }} placeholder="Selecione o segmento" onChange={handleChange} optionLabelProp="label">
-                            <Option value="Alimentação" label="Alimentação">
+                        <Select mode="multiple" style={{ width: '100%' }} placeholder="Selecione o segmento" onChange={handleSegmento} optionLabelProp="label">
+                            <Option value="ALIMENTACAO" label="Alimentação">
                                 <div className="demo-option-label-item">
                                     <span role="img" aria-label="Alimentação">
                                         Alimentação
                             </span>
                                 </div>
                             </Option>
-                            <Option value="Vestimentas" label="Vestimentas">
+                            <Option value="VESTIMENTAS" label="Vestimentas">
                                 <div className="demo-option-label-item">
                                     <span role="img" aria-label="Vestimentas">
                                         Vestimentas
                             </span>
                                 </div>
                             </Option>
-                            <Option value="Atividades" label="Atividades">
+                            <Option value="ATIVIDADES" label="Atividades">
                                 <div className="demo-option-label-item">
                                     <span role="img" aria-label="Atividades">
                                         Atividades
                             </span>
                                 </div>
                             </Option>
-                            <Option value="Outros" label="Outros">
+                            <Option value="OUTROS" label="Outros">
                                 <div className="demo-option-label-item">
                                     <span role="img" aria-label="Outros">
                                         Outros
@@ -89,8 +100,8 @@ function Home() {
                     </div>
                     <div className="titletype">
                         <h3><strong>POR LOCALIZAÇÃO</strong></h3>
-                        <Select className="localization" placeholder="UF" style={{ width: '100%' }}>
-                            <Option value="*">TODOS OS ESTADOS</Option>
+                        <Select className="localization" onSelect={addEstado} placeholder="UF" style={{ width: '100%' }}>
+                            <Option value="">TODOS OS ESTADOS</Option>
                             <Option value="AC">Acre</Option>
                             <Option value="AL">Alagoas</Option>
                             <Option value="AP">Amapá</Option>
@@ -126,26 +137,12 @@ function Home() {
                                 <h3><strong>TIPO DE AJUDA</strong></h3>
                             </div>
                             <div className="typehelp" >
-                                <Checkbox value="0" onChange={event => event.target.checked ? addTipo(event.target.value) : removeTipo(event.target.value)}>Voluntária</Checkbox>
-                                <br />
-                                <Checkbox value="1" onChange={event => event.target.checked ? addTipo(event.target.value) : removeTipo(event.target.value)}>Financeira</Checkbox>
-                                <br />
-                                <Checkbox value="2" onChange={event => event.target.checked ? addTipo(event.target.value) : removeTipo(event.target.value)}>Divulgação</Checkbox>
+                                <Checkbox className="typehelp-checkbox" value="1" onChange={event => event.target.checked ? addTipo(event.target.value) : removeTipo(event.target.value)}>Voluntária</Checkbox>
+                                <Checkbox className="typehelp-checkbox" value="2" onChange={event => event.target.checked ? addTipo(event.target.value) : removeTipo(event.target.value)}>Financeira</Checkbox>
+                                <Checkbox className="typehelp-checkbox" value="3" onChange={event => event.target.checked ? addTipo(event.target.value) : removeTipo(event.target.value)}>Divulgação</Checkbox>
                             </div>
                         </div>
-                        <div className="filtro">
-                            <div className="titletype">
-                                <h3><strong>FILTRAR POR</strong></h3>
-                            </div>
-                            <div className="typehelp">
-                                <Checkbox value="">Curtidas</Checkbox>
-                                <br />
-                                <Checkbox value="">Novos projetos</Checkbox>
-                                <br />
-                                <Checkbox value="">ONG</Checkbox>
-                            </div>
-                        </div>
-                        <Button type="primary" onClick={getProjectBy} block> <SearchOutlined /> Pesquisar </Button>
+                        <Button type="primary" onClick={getProject} block> <SearchOutlined /> Pesquisar </Button>
                         <br />
                         <br />
                     </div>
@@ -157,7 +154,7 @@ function Home() {
 
     useEffect(() => {
         async function getProjects() {
-            const response = await api.get(`/projetos?page=${pagina}&size=${tamanho}`)
+            const response = await api.put(`/projetos?page=${pagina}&size=${tamanho}`)
             if (response.status === 200) {
                 const { lista, total } = response.data
                 setProjetos(lista)
@@ -173,11 +170,16 @@ function Home() {
     }
 
     function definirTipo(projeto) {
-        return projeto.tipo === "0" ? <Tag>Voluntária</Tag> : projeto.tipo === "1" ? <Tag>Financeira</Tag> : <Tag>Divulgação</Tag>
+        return projeto.tipo === "1" ? <Tag key="1">Voluntária</Tag> : projeto.tipo === "2" ? <Tag key="2">Financeira</Tag> : <Tag key="3">Divulgação</Tag>
     }
 
     function criarSegmentos(projeto) {
-        return String(projeto.segmentos).split(',').map(seg => seg ? <Tag>{seg.charAt(0) + seg.slice(1).toLowerCase()}</Tag> : '')
+        return String(projeto.segmentos).split(',').map((seg, index) => {
+            if (seg === 'ALIMENTACAO') {
+                return <Tag key={index}>Alimentação</Tag>
+            }
+            return seg ? <Tag key={index}>{seg.charAt(0) + seg.slice(1).toLowerCase()}</Tag> : ''
+        })
     }
 
     function gotoDetails(id) {

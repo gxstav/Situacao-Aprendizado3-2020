@@ -45,7 +45,7 @@ routes.post('/cadastro', celebrate({
 routes.post('/projetos', auth.authenticate, celebrate({
   [Segments.BODY]: Joi.object().keys({
     name: Joi.string().required(),
-    type: Joi.number().integer().required().valid(0, 1, 2),
+    type: Joi.number().integer().required().valid(1, 2, 3),
     address: Joi.string().required(),
     date_start: Joi.string().required(),
     date_end: Joi.string().required(),
@@ -74,11 +74,17 @@ routes.get('/projetos/:id', celebrate({
   }
 }), project.details)
 
-routes.get('/projetos', celebrate({
+routes.put('/projetos', celebrate({
   [Segments.QUERY]: {
     page: Joi.number(),
     size: Joi.number()
-  }
+  },
+  [Segments.BODY]: Joi.object().keys({
+    name: Joi.string().allow(''),
+    uf: Joi.string().allow(''),
+    types: Joi.array().items(Joi.string().valid('1', '2', '3').allow('')),
+    segments: Joi.array().items(Joi.string().valid('ALIMENTACAO', 'ATIVIDADES', 'OUTROS', 'VESTIMENTAS').allow(''))
+  })
 }), project.index)
 
 

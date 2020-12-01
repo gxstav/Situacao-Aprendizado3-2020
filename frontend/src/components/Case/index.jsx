@@ -65,7 +65,7 @@ function Case(props) {
     }
 
     function definirTipo () {
-        return projeto.tipo === "0" ? <Tag key={0}>Voluntária</Tag> : projeto.tipo === "1" ? <Tag key={1}>Financeira</Tag> : <Tag key={2}>Divulgação</Tag>
+        return projeto.tipo === "1" ? <Tag key="1">Voluntária</Tag> : projeto.tipo === "2" ? <Tag key="2">Financeira</Tag> : <Tag key="3">Divulgação</Tag>
     }
 
     return (

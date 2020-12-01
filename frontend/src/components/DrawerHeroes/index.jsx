@@ -63,7 +63,8 @@ const DrawerHeroes = forwardRef((props, ref) => {
     }
 
     function addSegment(singleSegment) {
-        setSegment([...segment, singleSegment])
+        let updatedSegment = [...segment, singleSegment].sort((current, next) => current.localeCompare(next))
+        setSegment(updatedSegment)
     }
 
     function removeSegment(singleSegment) {
@@ -119,9 +120,9 @@ const DrawerHeroes = forwardRef((props, ref) => {
                                 rules={[{ type:'string', required: true, message: 'Insira o tipo de ajuda!' }]}
                             >
                                 <Select placeholder="Informe o tipo de ajuda" onChange={type => setType(type)}>
-                                    <Option value="0">Voluntária</Option>
-                                    <Option value="1">Financeira</Option>
-                                    <Option value="2">Divulgação</Option>
+                                    <Option value="1">Voluntária</Option>
+                                    <Option value="2">Financeira</Option>
+                                    <Option value="3">Divulgação</Option>
                                 </Select>
                             </Form.Item>
                         </Col>

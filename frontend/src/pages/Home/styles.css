@@ -122,6 +122,8 @@
     background-color: white;
     
 }
+
+
 .titletype{
     padding-top: 20px;
     padding-bottom: 5px;
@@ -130,12 +132,16 @@
     font-family: 'Cabin', sans-serif;
     background-color: white;
 }
-.type{
-    float: right;
+
+.type {
     width: 50%;
     padding-bottom: 10px;
     background-color: white;
 
+}
+
+.type .typehelp {
+    width: 200%;
 }
 .filtro{
     float: right;
@@ -152,5 +158,6 @@
     background-color: white;
     padding-bottom: 30px;
 }
+
 
 
