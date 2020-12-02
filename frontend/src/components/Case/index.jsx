@@ -6,6 +6,8 @@ import api from '../../services/api';
 import Voluntario from '../../components/Voluntario';
 import Doar from '../../components/Doar';
 import pagamentos from '../../assets/images/pagamentos.png';
+import pagamentos2 from '../../assets/images/pagamentos400.png';
+import pagamentos3 from '../../assets/images/pagamentos600.png';
 import { useCookies } from 'react-cookie';
 import moment from 'moment'
 
@@ -147,7 +149,7 @@ function Case(props) {
                             </Voluntario>
                             <Doar ref={doarRef}>
                                 <h2>Em breve você poderá escolher uma das opções abaixo para efetuar a sua doação!</h2>
-                                <img src={pagamentos} alt="pagamentos" width="100%"></img>
+                                <img src={pagamentos3} className="payments" alt="pagamentos" width="58%"></img>
                             </Doar>
                         </div>
                     </div>

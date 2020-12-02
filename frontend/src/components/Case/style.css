@@ -45,3 +45,10 @@
 .tabsContainer{
     text-align: center;
 }
+.payments{
+    display: flex;
+    margin-left: 18%;
+    margin-top: 20%;
+    width: 60%;
+    height: auto;
+}
