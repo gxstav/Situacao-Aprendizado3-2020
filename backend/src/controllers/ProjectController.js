@@ -1,5 +1,5 @@
 const connection = require('../database/connection')
-const encrypt = require('../utils/encryptPassword')
+const moment = require('moment')
 
 module.exports = {
     async create (request, response) {
@@ -72,7 +72,7 @@ module.exports = {
     async details (request, response) {
         const { id } = request.params
         const data = await connection('project')
-            .select('project.name as nome', 'project.address as endereco', 'project.segment as segmentos', 'project.type as tipo', 'project.description as descricao', 'ong.name as ong', 'ong.url as site', 'ong.email as email', 'ong.phone as celular', 'ong.city as cidade', 'ong.uf as uf')
+            .select('project.name as nome', 'project.address as endereco', 'project.segment as segmentos', 'project.type as tipo', 'project.description as descricao', 'project.date_start as inicio', 'project.date_end as fim', 'ong.name as ong', 'ong.url as site', 'ong.email as email', 'ong.phone as celular', 'ong.city as cidade', 'ong.uf as uf')
             .where('project.id', id)
             .leftJoin('ong', 'project.ong_id', 'ong.id')
         return response.status(200).json(data[0])
@@ -82,5 +82,29 @@ module.exports = {
         const id = request.headers['x-project-id']
         await connection('project').where('id', id).del()
         return response.status(200).json({ message: "Projeto excluído." })
+    },
+     
+    async verify (request, response, next) {
+        if (response.user) {
+            const { email, password } = response.user
+            const data = await connection('project')
+                .select('project.id as id', 'project.date_start as start', 'project.date_end as end')
+                .where({ 'ong.email': email, 'ong.password': password })
+                .leftJoin('ong', 'project.ong_id', 'ong.id')
+            
+            data.map(async (project) => {
+                const now = moment().format()
+                const PROJECT_EXPIRED = moment(project.end).isBefore(now)
+                if (PROJECT_EXPIRED) {
+                    await connection('project')
+                        .update({
+                            active: false,
+                            updated_at: moment().format()
+                        })
+                        .where('id', project.id)
+                }
+            })
+        }   
+        next()
     }
 }

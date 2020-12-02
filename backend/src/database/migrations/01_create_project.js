@@ -1,5 +1,6 @@
-let knex = require('knex')
-
+const knex = require('knex')
+const moment = require('moment')
+const NOW = () => moment().format()
 module.exports = {
   up: async function(knex) {
     return knex.schema.createTable('project', table => {
@@ -14,8 +15,8 @@ module.exports = {
       table.text('description').notNullable()
       table.timestamp('date_start').notNullable()
       table.timestamp('date_end').notNullable()
-      table.timestamp('created_at').defaultTo(knex.fn.now())
-      table.timestamp('updated_at').defaultTo(knex.fn.now())
+      table.timestamp('created_at').defaultTo(NOW())
+      table.timestamp('updated_at').defaultTo(NOW())
     })
   },
   

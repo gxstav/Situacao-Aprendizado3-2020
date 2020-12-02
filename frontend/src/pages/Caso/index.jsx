@@ -31,12 +31,6 @@ function Caso (props){
         history.push('/')
     }
 
-    function render(incident) {
-        if (incident) {
-            return <Case id={incident}/>
-        }
-    }
-
     const [ incident , setIncident ] = useState(0)
     
     useEffect(() => {
@@ -55,7 +49,7 @@ function Caso (props){
             <Content>
                 <Row>
                     <Col span={17}>
-                        { render(incident) }
+                        <Case id={incident}/>
                     </Col>
                     <Col span={7}>
                         <div className="siderContent">

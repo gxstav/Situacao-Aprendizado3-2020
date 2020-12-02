@@ -38,7 +38,7 @@ const DrawerHeroes = forwardRef((props, ref) => {
     async function handleProject(event) {
         event.preventDefault()
         try {
-            const data = { name, type, address, segment, description, date_start: moment(dateRange[0]).format('YYYY-MM-DD'), date_end: moment(dateRange[1]).format('YYYY-MM-DD') }
+            const data = { name, type, address, segment, description, date_start: moment(dateRange[0]).format(), date_end: moment(dateRange[1]).format() }
             const token = cookie['x-access-token']
             const response = await api.post('/projetos', data, {
                 headers: { 'x-access-token': token }

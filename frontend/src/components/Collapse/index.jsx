@@ -72,7 +72,7 @@ function OptionsCollapse() {
 
     return(
         <div id="ProjectPage">
-            <Collapse defaultActiveKey={['1']}>
+            <Collapse defaultActiveKey={['1', '2']}>
                 <Panel header="Projetos em andamento" key="1">
                 { ativos.map(projeto => criarList(projeto)) }
                 </Panel>

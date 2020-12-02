@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
-import { Layout, Menu, Button, Avatar, Input, Form, Row, Col } from 'antd';
-import { UserOutlined, CloseOutlined } from '@ant-design/icons';
+import { Layout, Menu, Button, Avatar, Input, Form, Row } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
 import './style.css';
 import iconheroes from '../../assets/images/iconheroes.png';
 import Login from '../../components/Login';
 import api from '../../services/api';
 import moment from 'moment';
-import imagem_login from '../../assets/images/imagem_login.png';
 
 const { Header } = Layout;
 
@@ -115,9 +114,6 @@ function Navbar(props) {
                 <Login ref={modalRef}>
                     <Row>
                         <h1>Logout</h1>
-                        <Col span={12}>
-                            <Avatar id="fechar" onClick={closeModal} size={25} icon={<CloseOutlined />} />
-                        </Col>
                     </Row>
                     <br/>
                     <Button id="entrar" type="primary" htmlType="submit" onClick={handleLogout} size="medium">
@@ -128,12 +124,8 @@ function Navbar(props) {
                 <Login ref={modalRef}>
                     <Row>
                         <h1>Login</h1>
-                        <Col span={12}>
-                            <Avatar id="fechar" onClick={() => { modalRef.current.close() }} size={25} icon={<CloseOutlined />} />
-                        </Col>
                     </Row>
                     <br />
-                    <img src={imagem_login} alt="Login" id="imagem-login"/><p></p>
                     <Form name="logar" >
                         <Form.Item name="email" rules={[{ type: 'email', message: 'Este não é um email válido!' },
                             { required: true, message: 'Por favor insira seu email!' }]}>

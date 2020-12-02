@@ -3,6 +3,7 @@ const { celebrate, Joi, Segments } = require('celebrate')
 const ong = require('./controllers/OngController')
 const project = require('./controllers/ProjectController')
 const auth = require('./controllers/AuthController')
+const service = require('./controllers/ServiceController')
 
 const routes = express.Router()
 
@@ -54,7 +55,7 @@ routes.post('/projetos', auth.authenticate, celebrate({
   })
 }), project.create)
 
-routes.get('/ong/projetos', auth.authenticate, celebrate({
+routes.get('/ong/projetos', auth.authenticate, project.verify, celebrate({
   [Segments.HEADERS]: Joi.object().keys({
     'x-access-token': Joi.string().required(),
     'x-andamento': Joi.boolean().required()
@@ -68,13 +69,13 @@ routes.delete('/projetos', auth.authenticate, celebrate({
   }).options({ allowUnknown: true })
 }), project.delete)
 
-routes.get('/projetos/:id', celebrate({
+routes.get('/projetos/:id', project.verify, celebrate({
   [Segments.PARAMS]: {
     id: Joi.number().required()
   }
 }), project.details)
 
-routes.put('/projetos', celebrate({
+routes.put('/projetos', project.verify, celebrate({
   [Segments.QUERY]: {
     page: Joi.number(),
     size: Joi.number()
@@ -87,5 +88,9 @@ routes.put('/projetos', celebrate({
   })
 }), project.index)
 
+// USER ROUTES
+routes.post('/mailer', service.mailer)
+
+routes.post('/messenger', service.messenger)
 
 module.exports = routes
