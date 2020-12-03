@@ -1,5 +1,5 @@
 const nodemailer = require('nodemailer')
-// const ses = require('nodemailer-ses-transport')
+const ses = require('nodemailer-ses-transport')
 // const aws = require('aws-sdk')
 const twilio = require('twilio')(process.env.TWILIO_SID, process.env.TWILIO_TOKEN)
 module.exports = {
@@ -12,26 +12,17 @@ module.exports = {
         //     region: process.env.AWS_REGION
         // });
 
-        // const transporter = nodemailer.createTransport(ses({
-        //     accessKeyId: process.env.AWS_ACCESS_KEY,
-        //     secretAccessKey: process.env.AWS_SECRET,
-        //     region: process.env.AWS_REGION
-        // }))
+        const transporter = nodemailer.createTransport(ses({
+            accessKeyId: process.env.AWS_ACCESS_KEY,
+            secretAccessKey: process.env.AWS_SECRET,
+            region: process.env.AWS_REGION
+        }))
 
         // const transporter = nodemailer.createTransport({
         //     SES: new aws.SES({
         //       apiVersion: '2010-12-01'
         //     })
         //   });
-        
-        const transporter = nodemailer.createTransport({
-            host: 'smtp.ethereal.email',
-            port: 587,
-            auth: {
-                user: 'austen.jacobs@ethereal.email',
-                pass: 'hqnEBeaMy5TMRtYrFK'
-            }
-        });
 
         const info = await transporter.sendMail({
             from: email,

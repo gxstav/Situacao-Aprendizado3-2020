@@ -91,6 +91,4 @@ routes.put('/projetos', project.verify, celebrate({
 // USER ROUTES
 routes.post('/mailer', service.mailer)
 
-routes.post('/messenger', service.messenger)
-
 module.exports = routes
